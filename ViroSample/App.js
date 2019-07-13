@@ -1,27 +1,28 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   AppRegistry,
   Text,
   View,
   StyleSheet,
   PixelRatio,
-  TouchableHighlight
-} from "react-native";
+  TouchableHighlight,
+  Button
+} from 'react-native';
 
-import { ViroARSceneNavigator } from "react-viro";
-import Maps from "./components/Maps";
+import { ViroARSceneNavigator } from 'react-viro';
+import Maps from './components/Maps';
 
 var sharedProps = {
-  apiKey: "2DF60EAD-EC00-4D0A-83DA-96E20F6E3352"
+  apiKey: '2DF60EAD-EC00-4D0A-83DA-96E20F6E3352'
 };
 
 // Sets the default scene you want for AR and VR
-var InitialARScene = require("./js/HelloWorldSceneAR");
+var InitialARScene = require('./js/HelloWorldSceneAR');
 
-var UNSET = "UNSET";
+var UNSET = 'UNSET';
 
-var AR_NAVIGATOR_TYPE = "AR";
-var MAPS_NAVIGATOR_TYPE = "MAPs";
+var AR_NAVIGATOR_TYPE = 'AR';
+var MAPS_NAVIGATOR_TYPE = 'MAPs';
 
 // This determines which type of experience to launch in, or UNSET, if the user should
 // be presented with a choice of AR or VR. By default, we offer the user a choice.
@@ -33,8 +34,10 @@ export default class ViroSample extends Component {
 
     this.state = {
       navigatorType: defaultNavigatorType,
-      sharedProps: sharedProps
+      sharedProps: sharedProps,
+      activeExample: -1
     };
+
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
 
@@ -42,7 +45,11 @@ export default class ViroSample extends Component {
       this
     );
     this._exitViro = this._exitViro.bind(this);
+
+    // this.onBack = this.onBack.bind(this);
   }
+
+  addNinja = ninja => {};
 
   // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
   // if you are building a specific type of experience.
@@ -68,7 +75,7 @@ export default class ViroSample extends Component {
           <TouchableHighlight
             style={localStyles.buttons}
             onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
-            underlayColor={"#68a0ff"}
+            underlayColor={'#68a0ff'}
           >
             <Text style={localStyles.buttonText}>AR</Text>
           </TouchableHighlight>
@@ -76,7 +83,7 @@ export default class ViroSample extends Component {
           <TouchableHighlight
             style={localStyles.buttons}
             onPress={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
-            underlayColor={"#FF0000"}
+            underlayColor={'#FF0000'}
           >
             <Text style={localStyles.buttonText}>MAPS</Text>
           </TouchableHighlight>
@@ -88,10 +95,22 @@ export default class ViroSample extends Component {
   // Returns the ViroARSceneNavigator which will start the AR experience
   _getARNavigator() {
     return (
-      <ViroARSceneNavigator
-        {...this.state.sharedProps}
-        initialScene={{ scene: InitialARScene }}
-      />
+      <>
+        <View>
+          <Button
+            // onPress={this.handlePress}
+            onPress={this._getExperienceButtonOnPress(UNSET)}
+            title="Back"
+            color={this.state.color}
+            accessibilityLabel="Navigate back a page"
+          />
+        </View>
+        <ViroARSceneNavigator
+          {...this.state.sharedProps}
+          getExperienceButtonOnPress={this._getExperienceButtonOnPress(UNSET)}
+          initialScene={{ scene: InitialARScene }}
+        />
+      </>
     );
   }
 
@@ -106,7 +125,11 @@ export default class ViroSample extends Component {
   }
 
   _getMapsNavigator() {
-    return <Maps />;
+    return (
+      <Maps
+        getExperienceButtonOnPress={this._getExperienceButtonOnPress(UNSET)}
+      />
+    );
   }
 
   // This function "exits" Viro by setting the navigatorType to UNSET.
@@ -120,30 +143,30 @@ export default class ViroSample extends Component {
 var localStyles = StyleSheet.create({
   viroContainer: {
     flex: 1,
-    backgroundColor: "black"
+    backgroundColor: 'black'
   },
   outer: {
     flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "white"
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white'
   },
   inner: {
     flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    backgroundColor: "black"
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: 'black'
   },
   titleText: {
     paddingTop: 30,
     paddingBottom: 20,
-    color: "#fff",
-    textAlign: "center",
+    color: '#fff',
+    textAlign: 'center',
     fontSize: 25
   },
   buttonText: {
-    color: "#fff",
-    textAlign: "center",
+    color: '#fff',
+    textAlign: 'center',
     fontSize: 20
   },
   buttons: {
@@ -153,10 +176,10 @@ var localStyles = StyleSheet.create({
     paddingBottom: 20,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor: "#68a0cf",
+    backgroundColor: '#68a0cf',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#fff"
+    borderColor: '#fff'
   },
   exitButton: {
     height: 50,
@@ -165,10 +188,10 @@ var localStyles = StyleSheet.create({
     paddingBottom: 10,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor: "#68a0cf",
+    backgroundColor: '#68a0cf',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#fff"
+    borderColor: '#fff'
   }
 });
 
