@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import { ViroARSceneNavigator } from "react-viro";
+import Maps from "./components/Maps";
 
 var sharedProps = {
   apiKey: "2DF60EAD-EC00-4D0A-83DA-96E20F6E3352"
@@ -20,7 +21,7 @@ var InitialARScene = require("./js/HelloWorldSceneAR");
 var UNSET = "UNSET";
 
 var AR_NAVIGATOR_TYPE = "AR";
-var MAP_NAVIGATOR_TYPE = "MAP";
+var MAPS_NAVIGATOR_TYPE = "MAPs";
 
 // This determines which type of experience to launch in, or UNSET, if the user should
 // be presented with a choice of AR or VR. By default, we offer the user a choice.
@@ -48,8 +49,8 @@ export default class ViroSample extends Component {
   render() {
     if (this.state.navigatorType == UNSET) {
       return this._getExperienceSelector();
-    } else if (this.state.navigatorType == MAP_NAVIGATOR_TYPE) {
-      return this._getMapNavigator();
+    } else if (this.state.navigatorType == MAPS_NAVIGATOR_TYPE) {
+      return this._getMapsNavigator();
     } else if (this.state.navigatorType == AR_NAVIGATOR_TYPE) {
       return this._getARNavigator();
     }
@@ -74,10 +75,10 @@ export default class ViroSample extends Component {
 
           <TouchableHighlight
             style={localStyles.buttons}
-            onPress={this._getExperienceButtonOnPress(MAP_NAVIGATOR_TYPE)}
+            onPress={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
             underlayColor={"#FF0000"}
           >
-            <Text style={localStyles.buttonText}>MAP</Text>
+            <Text style={localStyles.buttonText}>MAPS</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -104,8 +105,8 @@ export default class ViroSample extends Component {
     };
   }
 
-  _getMapNavigator() {
-    return <Map />;
+  _getMapsNavigator() {
+    return <Maps />;
   }
 
   // This function "exits" Viro by setting the navigatorType to UNSET.
