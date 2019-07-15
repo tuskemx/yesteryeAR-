@@ -1,15 +1,9 @@
 import MapView from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation'
-
 import React, { Component, Fragment } from 'react';
-import { Text, View, StyleSheet, Button, TouchableHighlight, Vibration, Image } from 'react-native';
+import { Text, View, StyleSheet, Button, TouchableHighlight, Vibration, Image, Linking } from 'react-native';
 import PlaceInfo from './PlaceInfo';
 
-
-
-
-
-// const Maps = () => {
 
 export default class Maps extends Component {
   state = {
@@ -25,6 +19,26 @@ export default class Maps extends Component {
       color: '#959595'
     });
   };
+
+  onDoublePress = (place) => {
+    if (this.state.placeInfo.title !== place.title) {
+      this.setState({ placeInfo: place })
+    }
+    const time = new Date().getTime();
+    const delta = time - this.lastPress;
+    const DOUBLE_PRESS_DELAY = 1000
+    if (delta < DOUBLE_PRESS_DELAY) {
+      const scheme = 'geo:0,0?q='
+      const lat = this.state.placeInfo.latitude;
+      const lng = this.state.placeInfo.longitude;
+      const latLng = `${lat},${lng}`;
+      const label = `${this.state.placeInfo.url}`
+      const url = `${scheme}${latLng}(${label})`
+      Linking.openURL(url);
+    }
+    this.lastPress = time;
+  }
+
 
   componentDidMount() {
 
@@ -66,6 +80,7 @@ export default class Maps extends Component {
   //   )
   // }
 
+
   render() {
     // let { func } = this.props;
     const piccadilly = {
@@ -100,14 +115,14 @@ export default class Maps extends Component {
               longitudeDelta: 0.0121
             }}
           >
-            <MapView.Marker coordinate={piccadilly} title={piccadilly.title} description={piccadilly.description}   ><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./piccadilly.jpg')} />
+            <MapView.Marker coordinate={piccadilly} title={piccadilly.title} description={piccadilly.description} onPress={() => this.onDoublePress(piccadilly)}><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./piccadilly.jpg')} />
               <MapView.Callout onPress={() => this.markerClick(piccadilly)} >
                 <View>
 
                 </View>
               </MapView.Callout >
             </MapView.Marker>
-            <MapView.Marker coordinate={hmp} title={hmp.title} description={hmp.description}><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./Assize1.jpg')} />
+            <MapView.Marker onPress={() => this.onDoublePress(hmp)} coordinate={hmp} title={hmp.title} description={hmp.description}><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./Assize1.jpg')} />
               <MapView.Callout onPress={() => this.markerClick(hmp)} >
                 <View>
 
