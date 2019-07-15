@@ -156,7 +156,7 @@ export default class Maps extends Component {
         <Button
           // onPress={this.handlePress}
           onPress={this.props.getExperienceButtonOnPress}
-          title="Back"
+          title="home"
           color={this.state.color}
           accessibilityLabel="Navigate back a page"
         />

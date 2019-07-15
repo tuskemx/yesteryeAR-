@@ -76,7 +76,7 @@ export default class PlaceInfo extends Component {
                             <Text style={{ fontSize: 30 }}>{this.props.info.title}</Text>
                             <Text style={{ fontSize: 15 }}>Visitors {this.props.info.visitors} </Text>
                             <Text style={{ fontSize: 25 }}>{"\n"}Quarter to Nine, feeling fine. Victoria station.</Text>
- 
+
 
                         </View>
                     }
@@ -97,20 +97,26 @@ export default class PlaceInfo extends Component {
                             {names}</Text>
 
                     </View>
-                    <Button
-                        style={{ fontSize: 20, color: 'green' }}
-                        styleDisabled={{ color: 'red' }}
-                        onPress={() => this._Open()}
-                        title="nav">nav
-                         </Button>
-                    <Button
-                        style={{ fontSize: 20, color: 'green' }}
-                        styleDisabled={{ color: 'red' }}
-                        onPress={() => this.props.ChangeMapState()}
-                        title="back">back
-                         </Button>
 
                 </View >
+                <Button
+                    style={{ fontSize: 20, color: 'green' }}
+                    styleDisabled={{ color: 'red' }}
+                    onPress={() => this._Open()}
+                    title="google maps">nav
+                         </Button>
+                <Button
+                    style={{ fontSize: 20, color: 'green' }}
+                    styleDisabled={{ color: 'red' }}
+                    onPress={() => this.props.ChangeMapState()}
+                    title="back">back
+                         </Button>
+                <Button
+                    style={{ fontSize: 20, color: 'green' }}
+                    styleDisabled={{ color: 'red' }}
+                    title="camera placeholder">camera placeholder
+                         </Button>
+
             </Fragment>
 
         )
