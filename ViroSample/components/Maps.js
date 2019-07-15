@@ -45,7 +45,7 @@ export default class Maps extends Component {
   render() {
     // let { func } = this.props;
     const location = {
-      latitude: 53.480759, longitude: -2.242631, title: "place", subtitle: "subplace"
+      latitude: 53.480759, longitude: -2.242631, title: "PICCADILLY PLACEHOLDER", subtitle: "IT USED TO BE NICE : ) "
     }
     const you = { longitude: this.state.longitude, latitude: this.state.latitude, title: "you", subtitle: "you" }
     return (

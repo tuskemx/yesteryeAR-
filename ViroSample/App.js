@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   AppRegistry,
   Text,
@@ -68,32 +68,34 @@ export default class ViroSample extends Component {
   // Presents the user with a choice of an AR or VR experience
   _getExperienceSelector() {
     return (
+      <Fragment>
+        <View style={localStyles.outer}>
+          <View style={localStyles.inner}>
+            <Text style={localStyles.titleText}>
+              Choose your desired experience:
+          </Text>
 
-      // <View style={localStyles.outer}>
-      //   <View style={localStyles.inner}>
-      //     <Text style={localStyles.titleText}>
-      //       Choose your desired experience:
-      //     </Text>
+            <TouchableHighlight
+              style={localStyles.buttons}
+              onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+              underlayColor={'#68a0ff'}
+            >
+              <Text style={localStyles.buttonText}>AR</Text>
+            </TouchableHighlight>
 
-      //     <TouchableHighlight
-      //       style={localStyles.buttons}
-      //       onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
-      //       underlayColor={'#68a0ff'}
-      //     >
-      //       <Text style={localStyles.buttonText}>AR</Text>
-      //     </TouchableHighlight>
-
-      //     <TouchableHighlight
-      //       style={localStyles.buttons}
-      //       onPress={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
-      //       underlayColor={'#FF0000'}
-      //     >
-      //       <Text style={localStyles.buttonText}>MAPS</Text>
-      //     </TouchableHighlight>
-      //   </View>
-      <View>
-        <Login />
-      </View>
+            <TouchableHighlight
+              style={localStyles.buttons}
+              onPress={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
+              underlayColor={'#FF0000'}
+            >
+              <Text style={localStyles.buttonText}>MAPS</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
+        <View>
+          <Login />
+        </View>
+      </Fragment>
     );
   }
 
