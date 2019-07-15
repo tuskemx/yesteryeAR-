@@ -9,6 +9,8 @@ import {
   Button
 } from 'react-native';
 
+import Login from './components/Login'
+
 import { ViroARSceneNavigator } from 'react-viro';
 import Maps from './components/Maps';
 
@@ -49,7 +51,7 @@ export default class ViroSample extends Component {
     // this.onBack = this.onBack.bind(this);
   }
 
-  addNinja = ninja => {};
+  addNinja = ninja => { };
 
   // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
   // if you are building a specific type of experience.
@@ -66,28 +68,31 @@ export default class ViroSample extends Component {
   // Presents the user with a choice of an AR or VR experience
   _getExperienceSelector() {
     return (
-      <View style={localStyles.outer}>
-        <View style={localStyles.inner}>
-          <Text style={localStyles.titleText}>
-            Choose your desired experience:
-          </Text>
 
-          <TouchableHighlight
-            style={localStyles.buttons}
-            onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
-            underlayColor={'#68a0ff'}
-          >
-            <Text style={localStyles.buttonText}>AR</Text>
-          </TouchableHighlight>
+      // <View style={localStyles.outer}>
+      //   <View style={localStyles.inner}>
+      //     <Text style={localStyles.titleText}>
+      //       Choose your desired experience:
+      //     </Text>
 
-          <TouchableHighlight
-            style={localStyles.buttons}
-            onPress={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
-            underlayColor={'#FF0000'}
-          >
-            <Text style={localStyles.buttonText}>MAPS</Text>
-          </TouchableHighlight>
-        </View>
+      //     <TouchableHighlight
+      //       style={localStyles.buttons}
+      //       onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+      //       underlayColor={'#68a0ff'}
+      //     >
+      //       <Text style={localStyles.buttonText}>AR</Text>
+      //     </TouchableHighlight>
+
+      //     <TouchableHighlight
+      //       style={localStyles.buttons}
+      //       onPress={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
+      //       underlayColor={'#FF0000'}
+      //     >
+      //       <Text style={localStyles.buttonText}>MAPS</Text>
+      //     </TouchableHighlight>
+      //   </View>
+      <View>
+        <Login />
       </View>
     );
   }
