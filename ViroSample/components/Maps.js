@@ -115,28 +115,28 @@ export default class Maps extends Component {
               longitudeDelta: 0.0121
             }}
           >
-            <MapView.Marker coordinate={piccadilly} title={piccadilly.title} description={piccadilly.description} onPress={() => this.onDoublePress(piccadilly)}><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./piccadilly.jpg')} />
+            <MapView.Marker coordinate={piccadilly} title={piccadilly.title} description={piccadilly.description} onPress={() => this.onDoublePress(piccadilly)}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./piccadilly.jpg')} />
               <MapView.Callout onPress={() => this.markerClick(piccadilly)} >
                 <View>
 
                 </View>
               </MapView.Callout >
             </MapView.Marker>
-            <MapView.Marker onPress={() => this.onDoublePress(hmp)} coordinate={hmp} title={hmp.title} description={hmp.description}><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./Assize1.jpg')} />
+            <MapView.Marker onPress={() => this.onDoublePress(hmp)} coordinate={hmp} title={hmp.title} description={hmp.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./Assize1.jpg')} />
               <MapView.Callout onPress={() => this.markerClick(hmp)} >
                 <View>
 
                 </View>
               </MapView.Callout >
             </MapView.Marker>
-            <MapView.Marker onPress={() => this.onDoublePress(hulme)} coordinate={hulme} title={hulme.title} description={hulme.description}><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./hulmefire.jpg')} />
+            <MapView.Marker onPress={() => this.onDoublePress(hulme)} coordinate={hulme} title={hulme.title} description={hulme.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./hulmefire.jpg')} />
               <MapView.Callout onPress={() => this.markerClick(hulme)} >
                 <View>
 
                 </View>
               </MapView.Callout >
             </MapView.Marker>
-            <MapView.Marker onPress={() => this.onDoublePress(victoria)} coordinate={victoria} title={victoria.title} description={victoria.description}><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./victoria.jpg')} />
+            <MapView.Marker onPress={() => this.onDoublePress(victoria)} coordinate={victoria} title={victoria.title} description={victoria.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./victoria.jpg')} />
               <MapView.Callout onPress={() => this.markerClick(victoria)} >
                 <View>
 
