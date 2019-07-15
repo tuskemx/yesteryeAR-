@@ -45,9 +45,9 @@ export default class Maps extends Component {
   render() {
     // let { func } = this.props;
     const location = {
-      latitude: 53.480759, longitude: -2.242631, title: "PICCADILLY PLACEHOLDER", subtitle: "IT USED TO BE NICE : ) "
+      latitude: 53.480759, longitude: -2.242631, title: "PICCADILLY PLACEHOLDER", description: "IT USED TO BE NICE : ) "
     }
-    const you = { longitude: this.state.longitude, latitude: this.state.latitude, title: "you", subtitle: "you" }
+    const you = { longitude: this.state.longitude, latitude: this.state.latitude, title: "you", description: "you" }
     return (
 
       <Fragment>
@@ -61,8 +61,8 @@ export default class Maps extends Component {
           }}
 
         >
-          <MapView.Marker coordinate={location} />
-          <MapView.Marker coordinate={you} />
+          <MapView.Marker coordinate={location} title={location.title} description={location.description} />
+          <MapView.Marker coordinate={you} title={you.title} description={you.description} />
 
         </MapView>
 
