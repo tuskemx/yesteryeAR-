@@ -72,23 +72,23 @@ export default class Maps extends Component {
   ChangeMapState = () => {
     this.setState({ isPopupTrue: true })
   }
-  // returnView = () => {
-  //   return (
-  //     <View>
-  //       <Text>hllowdw</Text>
-  //     </View>
-  //   )
-  // }
+
 
 
   render() {
-    // let { func } = this.props;
+
     const piccadilly = {
-      latitude: 53.4810, longitude: -2.2369, title: "Piccadilly Gardens, 1952", description: "PICCADILLY GARDENS", visitors: 12, url: 'Piccadilly', visitorNames: ['Sandy', 'Brandy', 'Mandy']
+      latitude: 53.4810, longitude: -2.2369, title: "Piccadilly Gardens, 1952", description: "Piccadilly Gardens", visitors: 12, url: 'Piccadilly', visitorNames: ['Sandy', 'Brandy', 'Mandy']
     }
 
     const hmp = {
-      latitude: 53.49175, longitude: -2.24567, title: "Strangeways Prison 1930?", description: "Assize Courts", url: 'Strangeways', visitors: 5
+      latitude: 53.49175, longitude: -2.24567, title: "Strangeways Prison", description: "Assize Courts", url: 'Strangeways', visitors: 5
+    }
+    const hulme = {
+      latitude: 53.469053, longitude: -2.240609, title: "Pauldens Fire, Cavendish Street", description: "Paulden's Fire", url: 'hulme', visitors: 5
+    }
+    const victoria = {
+      latitude: 53.487539, longitude: -2.242396, title: "Victoria Station", description: "quarter to nine - feeling fine", url: 'victoria', visitors: 5
     }
 
     return (
@@ -124,6 +124,20 @@ export default class Maps extends Component {
             </MapView.Marker>
             <MapView.Marker onPress={() => this.onDoublePress(hmp)} coordinate={hmp} title={hmp.title} description={hmp.description}><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./Assize1.jpg')} />
               <MapView.Callout onPress={() => this.markerClick(hmp)} >
+                <View>
+
+                </View>
+              </MapView.Callout >
+            </MapView.Marker>
+            <MapView.Marker onPress={() => this.onDoublePress(hulme)} coordinate={hulme} title={hulme.title} description={hulme.description}><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./hulmefire.jpg')} />
+              <MapView.Callout onPress={() => this.markerClick(hulme)} >
+                <View>
+
+                </View>
+              </MapView.Callout >
+            </MapView.Marker>
+            <MapView.Marker onPress={() => this.onDoublePress(victoria)} coordinate={victoria} title={victoria.title} description={victoria.description}><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./victoria.jpg')} />
+              <MapView.Callout onPress={() => this.markerClick(victoria)} >
                 <View>
 
                 </View>
