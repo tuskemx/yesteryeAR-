@@ -41,8 +41,7 @@ export default class Maps extends Component {
 
 
     setTimeout(() => {
-      console.warn(this.state.latitude)
-      console.warn("hhello")
+
     }, 5 * 1000)
 
   }
@@ -55,6 +54,10 @@ export default class Maps extends Component {
 
     this.setState({ isPopupTrue: false })
   }
+
+  ChangeMapState = () => {
+    this.setState({ isPopupTrue: true })
+  }
   // returnView = () => {
   //   return (
   //     <View>
@@ -66,11 +69,11 @@ export default class Maps extends Component {
   render() {
     // let { func } = this.props;
     const piccadilly = {
-      latitude: 53.480759, longitude: -2.242631, title: "Piccadilly Gardens, 1952", description: "PICCADILLY GARDENS", visitors: 12, url: 'piccadilly', visitorNames: ['Sandy', 'Brandy', 'Mandy']
+      latitude: 53.4810, longitude: -2.2369, title: "Piccadilly Gardens, 1952", description: "PICCADILLY GARDENS", visitors: 12, url: 'Piccadilly', visitorNames: ['Sandy', 'Brandy', 'Mandy']
     }
 
     const hmp = {
-      latitude: 53.49175, longitude: -2.24567, title: "Strangeways Prison 1930?", description: "Assize Courts", url: 'ancoats', visitors: 5
+      latitude: 53.49175, longitude: -2.24567, title: "Strangeways Prison 1930?", description: "Assize Courts", url: 'Strangeways', visitors: 5
     }
 
     return (
@@ -104,7 +107,7 @@ export default class Maps extends Component {
                 </View>
               </MapView.Callout >
             </MapView.Marker>
-            <MapView.Marker coordinate={hmp} title={hmp.title} description={hmp.description}><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./ancoats.jpg')} />
+            <MapView.Marker coordinate={hmp} title={hmp.title} description={hmp.description}><Image resizeMode="contain" style={{ width: 50, height: 50 }} source={require('./Assize1.jpg')} />
               <MapView.Callout onPress={() => this.markerClick(hmp)} >
                 <View>
 
@@ -130,7 +133,7 @@ export default class Maps extends Component {
         />
         {!this.state.isPopupTrue &&
           <View>
-            <PlaceInfo info={this.state.placeInfo} />
+            <PlaceInfo info={this.state.placeInfo} ChangeMapState={this.ChangeMapState} />
 
           </View>
         }
