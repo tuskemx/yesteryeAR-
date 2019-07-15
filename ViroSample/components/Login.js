@@ -1,27 +1,34 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, StyleSheet } from 'react-native'
+import { Input } from 'react-native-elements'
+
+
 
 
 export default class Login extends Component {
     render() {
         return (
             <View>
-                <TextInput style={this.Styles.input}
+
+                <Input style={this.Styles.input}
                     autoCapitalize="none"
                     onSubmitEditing={() => this.passwordInput.focus()}
                     autoCorrect={false}
                     keyboardType='email-address'
                     returnKeyType="next"
                     placeholder='Email or Mobile Num'
+                    leftIcon={{ type: 'font-awesome', name: 'chevron-left' }}
                     placeholderTextColor='black' />
 
-                <TextInput style={this.Styles.input}
+
+
+                <Input style={this.Styles.input}
                     returnKeyType="go"
                     ref={(input) => this.passwordInput = input}
                     placeholder='Password'
                     placeholderTextColor='black'
+                    leftIcon={{ type: 'font-awesome', name: 'chevron-right' }}
                     secureTextEntry />
-
 
 
             </View>

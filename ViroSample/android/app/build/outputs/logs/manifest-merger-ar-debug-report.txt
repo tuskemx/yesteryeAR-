@@ -5,6 +5,7 @@ INJECTED from /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/an
 INJECTED from /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/android/app/src/main/AndroidManifest.xml:1:1-33:12
 INJECTED from /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/android/app/src/main/AndroidManifest.xml:1:1-33:12
 MERGED from /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/android/app/src/main/AndroidManifest.xml:1:1-33:12
+MERGED from [:react-native-vector-icons] /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:@react-native-community_geolocation] /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/node_modules/@react-native-community/geolocation/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-maps] /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/node_modules/react-native-maps/lib/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-12:12
 MERGED from [com.facebook.react:react-native:0.59.3] /home/tuskem/.gradle/caches/transforms-1/files-1.1/react-native-0.59.3.aar/30e6b6d9cf28479de2e2fc842768a339/AndroidManifest.xml:2:1-13:12
@@ -194,6 +195,8 @@ uses-sdk
 INJECTED from /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/android/app/src/main/AndroidManifest.xml
 INJECTED from /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-vector-icons] /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:@react-native-community_geolocation] /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/node_modules/@react-native-community/geolocation/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:@react-native-community_geolocation] /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/node_modules/@react-native-community/geolocation/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-maps] /home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/node_modules/react-native-maps/lib/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41

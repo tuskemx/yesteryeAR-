@@ -12,7 +12,9 @@
     "geolocation": "^0.2.0",
     "react": "16.8.3",
     "react-native": "0.59.3",
+    "react-native-elements": "^1.1.0",
     "react-native-maps": "git://github.com/react-native-community/react-native-maps.git#master",
+    "react-native-vector-icons": "^6.6.0",
     "react-viro": "2.14.0"
   },
   "devDependencies": {
