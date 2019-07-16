@@ -29,9 +29,6 @@ export default class PlaceInfo extends Component {
 
 
     render() {
-        console.warn(this.props.info);
-        console.warn(this.props.info.latitude);
-        console.warn(this.props.info.longitude);
         const names = this.props.info.visitorNames
 
         return (
@@ -76,6 +73,16 @@ export default class PlaceInfo extends Component {
                             <Text style={{ fontSize: 30 }}>{this.props.info.title}</Text>
                             <Text style={{ fontSize: 15 }}>Visitors {this.props.info.visitors} </Text>
                             <Text style={{ fontSize: 25 }}>{"\n"}Quarter to Nine, feeling fine. Victoria station.</Text>
+
+
+                        </View>
+                    }
+                    {this.props.info.url === 'mancoats' &&
+                        <View>
+                            <Image source={require('./mancoats.jpg')} resizeMode="contain" style={{ width: 360, height: 250 }} />
+                            <Text style={{ fontSize: 30 }}>{this.props.info.title}</Text>
+                            <Text style={{ fontSize: 15 }}>Visitors {this.props.info.visitors} </Text>
+                            <Text style={{ fontSize: 25 }}>{"\n"}A man, in Manc, wearing a coat, walking in Ancoats.. Mancoats! - Jersey Street</Text>
 
 
                         </View>
