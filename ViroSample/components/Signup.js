@@ -16,8 +16,9 @@ export default class SignUp extends Component {
         username: ""
     };
     handleSubmit = () => {
+        this.props.changeStateBool(false);
         const value = this.input.getValue();
-        console.log(value);
+
     };
     render() {
         return (

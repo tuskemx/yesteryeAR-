@@ -1,28 +1,69 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, StyleSheet, Button } from 'react-native'
+import { Text, View, TextInput, StyleSheet, Button, TouchableOpacity } from 'react-native'
 import { Input } from 'react-native-elements'
 import t from "tcomb-form-native";
+import Maps from './Maps';
+
 
 const Form = t.form.Form;
 
 const User = t.struct({
 
     username: t.String,
-    password: t.String
+    password: t.String,
+
 })
 
 
 
 export default class Login extends Component {
+    state = {
+        username: 'D',
+        password: 'D',
+        renderMap: false
+
+    }
     handleSubmit = () => {
-        const value = this.input.getValue();
-        console.log("value: ", value);
+        this.props.changeStateBool(true);
+
+
+
     };
+    handleLogin = () => {
+        const value = this.input.getValue();
+
+
+        if (value.username === this.state.username && value.password === this.state.password) {
+            const navigatorType = 'UNSET'
+            console.warn("handleLogin")
+            console.warn(this.props._getExperienceButtonOnPress)
+            this.props._getExperienceButtonOnPress(navigatorType)
+            setTimeout(() => {
+                this.setState({ renderMap: true })
+            }, 4 * 100);
+
+        }
+
+    }
     render() {
         return (
-            <View style={styles.container}>
-                <Form type={User} ref={type => (this.input = type)} />
-                <Button title="Sign Up!" onPress={this.handleSubmit} />
+            <View>
+                {!this.state.renderMap &&
+                    <View style={styles.container}>
+                        <Form type={User} ref={type => (this.input = type)} />
+                        <View style={{ marginBottom: 15 }}>
+                            <TouchableOpacity style={styles.buttonstyle}
+                                activeOpacity={.5} onPress={this.handleLogin}><Text style={styles.text}>Login</Text></TouchableOpacity>
+                        </View>
+                        <TouchableOpacity style={styles.buttonstyle} onPress={this.handleSubmit}><Text style={styles.text}>Sign-up </Text></TouchableOpacity>
+
+                    </View >
+                }
+                {this.state.renderMap &&
+
+                    <Maps />
+
+                }
             </View>
         );
     }
@@ -33,7 +74,28 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 50,
         padding: 20,
-        backgroundColor: "#ffffff"
+        backgroundColor: "#ffffff",
+        borderRadius: 50
+    },
+    buttonstyle: {
+
+        marginTop: 10,
+        paddingTop: 8,
+        paddingBottom: 8,
+        marginLeft: 30,
+        marginRight: 30,
+        backgroundColor: '#00BCD4',
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#fff'
+    },
+    text: {
+        alignSelf: 'center',
+        color: 'black',
+        fontSize: 16,
+        fontWeight: '600',
+        paddingTop: 5,
+        paddingBottom: 5
     }
 });
 //             <View>

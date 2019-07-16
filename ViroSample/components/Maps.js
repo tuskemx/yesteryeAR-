@@ -10,7 +10,8 @@ export default class Maps extends Component {
     color: '#FF0000',
     placeInfo: '',
     err: '',
-    isPopupTrue: true
+    isPopupTrue: true,
+    isMapReady: false
   };
 
   handlePress = () => {
@@ -55,7 +56,7 @@ export default class Maps extends Component {
 
 
     setTimeout(() => {
-
+      this.setState({ isMapReady: true })
     }, 5 * 1000)
 
   }
@@ -73,6 +74,9 @@ export default class Maps extends Component {
     this.setState({ isPopupTrue: true })
   }
 
+  // onMapLayout = () => {
+  //   this.setState({ isMapReady: true });
+  // };
 
 
   render() {
@@ -99,9 +103,7 @@ export default class Maps extends Component {
       <Fragment>
 
         {this.state.isPopupTrue &&
-
           <MapView
-
             provider={"google"}
             followsUserLocation={true}
             showsUserLocation={true}
@@ -110,7 +112,8 @@ export default class Maps extends Component {
             toolbarEnabled={true}
             zoomEnabled={true}
             rotateEnabled={true}
-            style={{ flex: 0.7 }}
+            // onMapReady={() => { this.ChangeMapState() }}
+            style={{ flex: 1 }}
             region={{
               latitude: 53.480759,
               longitude: -2.242631,
@@ -118,49 +121,47 @@ export default class Maps extends Component {
               longitudeDelta: 0.0121
             }}
           >
-            <MapView.Marker coordinate={piccadilly} title={piccadilly.title} description={piccadilly.description} onPress={() => this.onDoublePress(piccadilly)}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./piccadilly.jpg')} />
-              <MapView.Callout onPress={() => this.markerClick(piccadilly)} >
-                <View>
 
-                </View>
-              </MapView.Callout >
-            </MapView.Marker>
-            <MapView.Marker onPress={() => this.onDoublePress(hmp)} coordinate={hmp} title={hmp.title} description={hmp.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./Assize1.jpg')} />
-              <MapView.Callout onPress={() => this.markerClick(hmp)} >
-                <View>
+            {this.state.isMapReady &&
+              <View>
+                <MapView.Marker coordinate={piccadilly} title={piccadilly.title} description={piccadilly.description} onPress={() => this.onDoublePress(piccadilly)}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./piccadilly.jpg')} />
+                  <MapView.Callout onPress={() => this.markerClick(piccadilly)} >
+                    <View>
 
-                </View>
-              </MapView.Callout >
-            </MapView.Marker>
-            <MapView.Marker onPress={() => this.onDoublePress(hulme)} coordinate={hulme} title={hulme.title} description={hulme.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./hulmefire.jpg')} />
-              <MapView.Callout onPress={() => this.markerClick(hulme)} >
-                <View>
+                    </View>
+                  </MapView.Callout >
+                </MapView.Marker>
+                <MapView.Marker onPress={() => this.onDoublePress(hmp)} coordinate={hmp} title={hmp.title} description={hmp.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./Assize1.jpg')} />
+                  <MapView.Callout onPress={() => this.markerClick(hmp)} >
+                    <View>
 
-                </View>
-              </MapView.Callout >
-            </MapView.Marker>
-            <MapView.Marker onPress={() => this.onDoublePress(victoria)} coordinate={victoria} title={victoria.title} description={victoria.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./victoria.jpg')} />
-              <MapView.Callout onPress={() => this.markerClick(victoria)} >
-                <View>
+                    </View>
+                  </MapView.Callout >
+                </MapView.Marker>
+                <MapView.Marker onPress={() => this.onDoublePress(hulme)} coordinate={hulme} title={hulme.title} description={hulme.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./hulmefire.jpg')} />
+                  <MapView.Callout onPress={() => this.markerClick(hulme)} >
+                    <View>
 
-                </View>
-              </MapView.Callout >
-            </MapView.Marker>
-            <MapView.Marker onPress={() => this.onDoublePress(mancoats)} coordinate={mancoats} title={mancoats.title} description={mancoats.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./mancoats.jpg')} />
-              <MapView.Callout onPress={() => this.markerClick(mancoats)} >
-                <View>
+                    </View>
+                  </MapView.Callout >
+                </MapView.Marker>
+                <MapView.Marker onPress={() => this.onDoublePress(victoria)} coordinate={victoria} title={victoria.title} description={victoria.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./victoria.jpg')} />
+                  <MapView.Callout onPress={() => this.markerClick(victoria)} >
+                    <View>
 
-                </View>
-              </MapView.Callout >
-            </MapView.Marker>
+                    </View>
+                  </MapView.Callout >
+                </MapView.Marker>
+                <MapView.Marker onPress={() => this.onDoublePress(mancoats)} coordinate={mancoats} title={mancoats.title} description={mancoats.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./mancoats.jpg')} />
+                  <MapView.Callout onPress={() => this.markerClick(mancoats)} >
+                    <View>
 
+                    </View>
+                  </MapView.Callout >
+                </MapView.Marker>
+              </View>
+            }
           </MapView>
-
-
-        }
-        {this.state.isPopupTrue && <View>
-          <Text>{this.state.latitude} {this.state.longitude}</Text>
-        </View>
         }
 
         <Button
@@ -170,7 +171,8 @@ export default class Maps extends Component {
           color={this.state.color}
           accessibilityLabel="Navigate back a page"
         />
-        {!this.state.isPopupTrue &&
+        {
+          !this.state.isPopupTrue &&
           <View>
             <PlaceInfo info={this.state.placeInfo} ChangeMapState={this.ChangeMapState} />
 
@@ -180,7 +182,7 @@ export default class Maps extends Component {
 
 
 
-      </Fragment>
+      </Fragment >
 
 
     );

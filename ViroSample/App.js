@@ -10,9 +10,11 @@ import {
 } from 'react-native';
 
 import Login from './components/Login'
+import SignUp from './components/Signup';
 
 import { ViroARSceneNavigator } from 'react-viro';
 import Maps from './components/Maps';
+
 
 var sharedProps = {
   apiKey: '2DF60EAD-EC00-4D0A-83DA-96E20F6E3352'
@@ -37,7 +39,9 @@ export default class ViroSample extends Component {
     this.state = {
       navigatorType: defaultNavigatorType,
       sharedProps: sharedProps,
-      activeExample: -1
+      activeExample: -1,
+      loginBool: false,
+      homeBool: false
     };
 
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
@@ -52,6 +56,10 @@ export default class ViroSample extends Component {
   }
 
   addNinja = ninja => { };
+
+  changeStateBool = (bool) => {
+    this.setState({ loginBool: bool })
+  }
 
   // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
   // if you are building a specific type of experience.
@@ -69,7 +77,7 @@ export default class ViroSample extends Component {
   _getExperienceSelector() {
     return (
       <Fragment>
-        <View style={{ display: "none" }}>
+        <View style={{ flex: 1 }}>
           <View style={localStyles.outer}>
             <View style={localStyles.inner}>
               <Text style={localStyles.titleText}>
@@ -95,8 +103,14 @@ export default class ViroSample extends Component {
           </View>
         </View>
         <View>
-          <Login />
+          {this.state.loginBool === false &&
+            <Login changeStateBool={this.changeStateBool} _getExperienceButtonOnPress={this._getExperienceButtonOnPress} />
+          }
+          {this.state.loginBool &&
+            <SignUp changeStateBool={this.changeStateBool} />
+          }
         </View>
+
       </Fragment>
     );
   }
@@ -126,7 +140,11 @@ export default class ViroSample extends Component {
   // This function returns an anonymous/lambda function to be used
   // by the experience selector buttons
   _getExperienceButtonOnPress(navigatorType) {
+    console.warn("hello");
+    console.warn(navigatorType)
+    console.warn(this.state.navigatorType)
     return () => {
+
       this.setState({
         navigatorType: navigatorType
       });
