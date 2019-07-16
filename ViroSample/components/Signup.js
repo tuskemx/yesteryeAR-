@@ -35,7 +35,7 @@ export default class SignUp extends Component {
                     <View style={{ marginTop: 15 }}>
                         <Button
                             title="Sign Up!"
-                            onPress={() => this.props.navigation.navigate("Login")}
+                            onPress={() => this.props.navigation.navigate("")}
                             color="#25a7e3"
                         />
                     </View>
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
         marginTop: 50,
         padding: 20,
         backgroundColor: "#ffffff",
-        alignItems: "stretch"
+        alignItems: "stretch",
+        opacity: 30
     }
 });
 

@@ -60,7 +60,7 @@ export default class Login extends Component {
                     {!this.state.renderMap &&
 
                         <View style={styles.container}>
-                            <Form type={User} ref={type => (this.input = type)} style={formstyle} />
+                            <Form type={User} ref={type => (this.input = type)} style={styles.container} />
                             <View style={{ marginBottom: 15 }}>
                                 <TouchableOpacity style={styles.buttonstyle}
                                     activeOpacity={.5} onPress={this.handleLogin}><Text style={styles.text}>Login</Text></TouchableOpacity>

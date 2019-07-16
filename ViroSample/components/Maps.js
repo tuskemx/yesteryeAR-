@@ -59,7 +59,7 @@ export default class Maps extends Component {
 
     setTimeout(() => {
       this.setState({ isMapReady: true })
-    }, 5 * 1000)
+    }, 5 * 250)
 
   }
 
@@ -83,7 +83,7 @@ export default class Maps extends Component {
 
   render() {
 
-    
+
 
 
 
