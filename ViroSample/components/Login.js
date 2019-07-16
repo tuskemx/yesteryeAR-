@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, StyleSheet, Button, TouchableOpacity } from 'react-native'
+import { Text, View, TextInput, StyleSheet, Button, TouchableOpacity, TouchableHighlight } from 'react-native'
 import { Input } from 'react-native-elements'
 import t from "tcomb-form-native";
 import Maps from './Maps';
@@ -38,14 +38,16 @@ export default class Login extends Component {
             console.warn("handleLogin")
             console.warn(this.props._getExperienceButtonOnPress)
             this.props._getExperienceButtonOnPress(navigatorType)
-            setTimeout(() => {
-                this.setState({ renderMap: true })
-            }, 4 * 100);
+
+            this.setState({ renderMap: true })
+
 
         }
 
     }
     render() {
+        const UNSET = 'UNSET'
+        const MAPS_NAVIGATOR_TYPE = 'MAPs'
         return (
             <View>
                 {!this.state.renderMap &&
@@ -60,8 +62,16 @@ export default class Login extends Component {
                     </View >
                 }
                 {this.state.renderMap &&
+                    <View>
+                        <TouchableHighlight
+                            style={styles.buttonstyle}
+                            onPress={this.props._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
+                            underlayColor={'#FF0000'}
+                        >
+                            <Text style={styles.text}>MAPS</Text>
+                        </TouchableHighlight>
 
-                    <Maps />
+                    </View>
 
                 }
             </View>

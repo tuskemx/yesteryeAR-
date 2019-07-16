@@ -77,7 +77,7 @@ export default class ViroSample extends Component {
   _getExperienceSelector() {
     return (
       <Fragment>
-        <View style={{ flex: 1 }}>
+        <View style={{ display: "none" }}>
           <View style={localStyles.outer}>
             <View style={localStyles.inner}>
               <Text style={localStyles.titleText}>
