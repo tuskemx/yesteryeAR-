@@ -22,13 +22,8 @@ export default class PlaceInfo extends Component {
         const latLng = `${lat},${lng}`;
         const label = `${this.props.info.url}`
         const url = `${scheme}${latLng}(${label})`
-
-
         Linking.openURL(url);
-
     }
-
-
     render() {
         const names = this.props.info.visitorNames
 

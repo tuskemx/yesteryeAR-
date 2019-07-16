@@ -3,6 +3,7 @@ import { Text, View, TextInput, StyleSheet, Button, TouchableOpacity, TouchableH
 import { Input } from 'react-native-elements'
 import t from "tcomb-form-native";
 import Maps from './Maps';
+import Home from './Home.js'
 
 
 
@@ -36,27 +37,21 @@ export default class Login extends Component {
 
 
         if (value.username === this.state.username && value.password === this.state.password) {
-            const navigatorType = 'UNSET'
+
             console.warn("handleLogin")
             console.warn(this.props._getExperienceButtonOnPress)
-            this.props._getExperienceButtonOnPress(navigatorType)
+            this.props._getExperienceButtonOnPress()
 
-            this.setState({ renderMap: true })
+
 
 
         }
 
     }
     render() {
-        const UNSET = 'UNSET'
-        const MAPS_NAVIGATOR_TYPE = 'MAPs'
         return (
             <ImageBackground source={require("./background.png")} style={{ width: '100%', height: '100%' }}>
                 < View >
-
-
-
-
                     {!this.state.renderMap &&
 
                         <View style={styles.container}>
@@ -66,23 +61,8 @@ export default class Login extends Component {
                                     activeOpacity={.5} onPress={this.handleLogin}><Text style={styles.text}>Login</Text></TouchableOpacity>
                             </View>
                             <TouchableOpacity style={styles.buttonstyle} onPress={this.handleSubmit}><Text style={styles.text}>Sign-up </Text></TouchableOpacity>
-
                         </View >
                     }
-                    {
-                        this.state.renderMap &&
-                        <View>
-                            <TouchableHighlight
-                                style={styles.buttonstyle}
-                                onPress={this.props._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
-                                underlayColor={'#FF0000'}
-                            >
-                                <Text style={styles.text}>MAPS</Text>
-                            </TouchableHighlight>
-
-                        </View>
-                    }
-
                 </View >
             </ImageBackground>
 

@@ -6,7 +6,8 @@ import {
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
-  Button
+  Button,
+  ImageBackground
 } from 'react-native';
 
 import Login from './components/Login'
@@ -24,7 +25,7 @@ var sharedProps = {
 var InitialARScene = require('./js/HelloWorldSceneAR');
 
 var UNSET = 'UNSET';
-
+var HOME = 'Home';
 var AR_NAVIGATOR_TYPE = 'AR';
 var MAPS_NAVIGATOR_TYPE = 'MAPs';
 
@@ -71,6 +72,10 @@ export default class ViroSample extends Component {
     } else if (this.state.navigatorType == AR_NAVIGATOR_TYPE) {
       return this._getARNavigator();
     }
+    else if (this.state.navigatorType == HOME) {
+      return this._getHomeNavigator();
+    }
+
   }
 
   // Presents the user with a choice of an AR or VR experience
@@ -104,7 +109,7 @@ export default class ViroSample extends Component {
         </View>
         <View>
           {this.state.loginBool === false &&
-            <Login changeStateBool={this.changeStateBool} _getExperienceButtonOnPress={this._getExperienceButtonOnPress} />
+            <Login changeStateBool={this.changeStateBool} _getExperienceButtonOnPress={this._getExperienceButtonOnPress(HOME)} />
           }
           {this.state.loginBool &&
             <SignUp changeStateBool={this.changeStateBool} />
@@ -140,9 +145,6 @@ export default class ViroSample extends Component {
   // This function returns an anonymous/lambda function to be used
   // by the experience selector buttons
   _getExperienceButtonOnPress(navigatorType) {
-    console.warn("hello");
-    console.warn(navigatorType)
-    console.warn(this.state.navigatorType)
     return () => {
 
       this.setState({
@@ -154,10 +156,34 @@ export default class ViroSample extends Component {
   _getMapsNavigator() {
     return (
       <Maps
-        getExperienceButtonOnPress={this._getExperienceButtonOnPress(UNSET)}
+        getExperienceButtonOnPress={this._getExperienceButtonOnPress(HOME)
+        }
       />
     );
   }
+  _getHomeNavigator() {
+    return (
+      <View>
+        <ImageBackground source={require("./components/background.png")} style={{ width: '100%', height: '100%' }}>
+          <TouchableHighlight
+            style={localStyles.buttonstyle}
+            onPress={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
+            underlayColor={'#FF0000'}
+          >
+            <Text style={localStyles.text}>MAPS</Text>
+          </TouchableHighlight>
+        </ImageBackground>
+
+      </View>
+    )
+  }
+  // _getHomeNavigator() {
+  //   return (
+  //     <
+  //       getExperienceButtonOnPress={this._getExperienceButtonOnPress(HOME)}
+  //     />
+  //   );
+  // }
 
   // This function "exits" Viro by setting the navigatorType to UNSET.
   _exitViro() {
@@ -219,6 +245,27 @@ var localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff'
+  },
+  buttonstyle: {
+
+    marginTop: 10,
+    paddingTop: 8,
+    paddingBottom: 8,
+    marginLeft: 30,
+    marginRight: 30,
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    borderWidth: 1,
+
+  },
+  text: {
+    alignSelf: 'center',
+    color: 'black',
+    fontSize: 16,
+    fontWeight: '600',
+    paddingTop: 5,
+    paddingBottom: 5,
+    backgroundColor: '#ffffff'
   }
 });
 
