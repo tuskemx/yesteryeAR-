@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Button } from "react-native";
+import { View, StyleSheet, Button, ImageBackground } from "react-native";
 import t from "tcomb-form-native";
 
 const Form = t.form.Form;
@@ -22,23 +22,25 @@ export default class SignUp extends Component {
     };
     render() {
         return (
-            <View style={styles.container}>
-                <Form type={User} ref={type => (this.input = type)} />
-                <View style={{ marginTop: 15 }}>
-                    <Button
-                        title="Already have an account? Login!"
-                        onPress={this.handleSubmit}
-                        color="#25a7e3"
-                    />
+            <ImageBackground source={require("./background.png")} style={{ width: '100%', height: '100%' }}>
+                <View style={styles.container}>
+                    <Form type={User} ref={type => (this.input = type)} />
+                    <View style={{ marginTop: 15 }}>
+                        <Button
+                            title="Already have an account? Login!"
+                            onPress={this.handleSubmit}
+                            color="#25a7e3"
+                        />
+                    </View>
+                    <View style={{ marginTop: 15 }}>
+                        <Button
+                            title="Sign Up!"
+                            onPress={() => this.props.navigation.navigate("Login")}
+                            color="#25a7e3"
+                        />
+                    </View>
                 </View>
-                <View style={{ marginTop: 15 }}>
-                    <Button
-                        title="Sign Up!"
-                        onPress={() => this.props.navigation.navigate("Login")}
-                        color="#25a7e3"
-                    />
-                </View>
-            </View>
+            </ImageBackground>
         );
     }
 }

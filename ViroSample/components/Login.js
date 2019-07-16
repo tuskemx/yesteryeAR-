@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, StyleSheet, Button, TouchableOpacity, TouchableHighlight } from 'react-native'
+import { Text, View, TextInput, StyleSheet, Button, TouchableOpacity, TouchableHighlight, ImageBackground } from 'react-native'
 import { Input } from 'react-native-elements'
 import t from "tcomb-form-native";
 import Maps from './Maps';
 
 
+
 const Form = t.form.Form;
+
 
 const User = t.struct({
 
@@ -49,43 +51,57 @@ export default class Login extends Component {
         const UNSET = 'UNSET'
         const MAPS_NAVIGATOR_TYPE = 'MAPs'
         return (
-            <View>
-                {!this.state.renderMap &&
-                    <View style={styles.container}>
-                        <Form type={User} ref={type => (this.input = type)} />
-                        <View style={{ marginBottom: 15 }}>
-                            <TouchableOpacity style={styles.buttonstyle}
-                                activeOpacity={.5} onPress={this.handleLogin}><Text style={styles.text}>Login</Text></TouchableOpacity>
+            <ImageBackground source={require("./background.png")} style={{ width: '100%', height: '100%' }}>
+                < View >
+
+
+
+
+                    {!this.state.renderMap &&
+
+                        <View style={styles.container}>
+                            <Form type={User} ref={type => (this.input = type)} style={formstyle} />
+                            <View style={{ marginBottom: 15 }}>
+                                <TouchableOpacity style={styles.buttonstyle}
+                                    activeOpacity={.5} onPress={this.handleLogin}><Text style={styles.text}>Login</Text></TouchableOpacity>
+                            </View>
+                            <TouchableOpacity style={styles.buttonstyle} onPress={this.handleSubmit}><Text style={styles.text}>Sign-up </Text></TouchableOpacity>
+
+                        </View >
+                    }
+                    {
+                        this.state.renderMap &&
+                        <View>
+                            <TouchableHighlight
+                                style={styles.buttonstyle}
+                                onPress={this.props._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
+                                underlayColor={'#FF0000'}
+                            >
+                                <Text style={styles.text}>MAPS</Text>
+                            </TouchableHighlight>
+
                         </View>
-                        <TouchableOpacity style={styles.buttonstyle} onPress={this.handleSubmit}><Text style={styles.text}>Sign-up </Text></TouchableOpacity>
+                    }
 
-                    </View >
-                }
-                {this.state.renderMap &&
-                    <View>
-                        <TouchableHighlight
-                            style={styles.buttonstyle}
-                            onPress={this.props._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
-                            underlayColor={'#FF0000'}
-                        >
-                            <Text style={styles.text}>MAPS</Text>
-                        </TouchableHighlight>
+                </View >
+            </ImageBackground>
 
-                    </View>
 
-                }
-            </View>
         );
     }
 }
 
+const formstyle = {
+    opacity: 100,
+    backgroundColor: '#ffffff'
+}
 const styles = StyleSheet.create({
     container: {
         justifyContent: "center",
         marginTop: 50,
         padding: 20,
-        backgroundColor: "#ffffff",
-        borderRadius: 50
+        borderRadius: 50,
+        opacity: 30
     },
     buttonstyle: {
 
@@ -94,10 +110,10 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
         marginLeft: 30,
         marginRight: 30,
-        backgroundColor: '#00BCD4',
+        backgroundColor: '#ffffff',
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: '#fff'
+
     },
     text: {
         alignSelf: 'center',
@@ -105,7 +121,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '600',
         paddingTop: 5,
-        paddingBottom: 5
+        paddingBottom: 5,
+        backgroundColor: '#ffffff'
     }
 });
 //             <View>

@@ -5,6 +5,8 @@ import { Text, View, StyleSheet, Button, TouchableHighlight, Vibration, Image, L
 import PlaceInfo from './PlaceInfo';
 
 
+
+
 export default class Maps extends Component {
   state = {
     color: '#FF0000',
@@ -80,6 +82,10 @@ export default class Maps extends Component {
 
 
   render() {
+
+    
+
+
 
     const piccadilly = {
       latitude: 53.4810, longitude: -2.2369, title: "Piccadilly Gardens, 1952", description: "Piccadilly Gardens", visitors: 12, url: 'Piccadilly', visitorNames: ['Sandy', 'Brandy', 'Mandy']
