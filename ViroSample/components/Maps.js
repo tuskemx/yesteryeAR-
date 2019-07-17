@@ -140,6 +140,7 @@ export default class Maps extends Component {
 
             {this.state.isMapReady &&
               <View>
+
                 <MapView.Marker coordinate={piccadilly} title={piccadilly.title} description={piccadilly.description} onPress={() => this.onDoublePress(piccadilly)}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./piccadilly.jpg')} />
                   <MapView.Callout onPress={() => this.markerClick(piccadilly)} >
                     <View>
@@ -147,6 +148,8 @@ export default class Maps extends Component {
                     </View>
                   </MapView.Callout >
                 </MapView.Marker>
+
+
                 <MapView.Marker onPress={() => this.onDoublePress(hmp)} coordinate={hmp} title={hmp.title} description={hmp.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./Assize1.jpg')} />
                   <MapView.Callout onPress={() => this.markerClick(hmp)} >
                     <View>
@@ -177,8 +180,12 @@ export default class Maps extends Component {
                 </MapView.Marker>
               </View>
             }
+
+
+
           </MapView>
         }
+
 
         <Button
           // onPress={this.handlePress}
@@ -187,6 +194,7 @@ export default class Maps extends Component {
           color={this.state.color}
           accessibilityLabel="Navigate back a page"
         />
+
         {
           !this.state.isPopupTrue &&
           <View>
@@ -194,6 +202,7 @@ export default class Maps extends Component {
 
           </View>
         }
+
 
 
 
