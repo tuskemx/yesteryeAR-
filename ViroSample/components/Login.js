@@ -1,80 +1,96 @@
-import React, { Component } from 'react'
-import { Text, View, TextInput, StyleSheet, Button, TouchableOpacity, TouchableHighlight, ImageBackground } from 'react-native'
-import { Input } from 'react-native-elements'
-import t from "tcomb-form-native";
-import Maps from './Maps';
-import Home from './Home.js'
+import React, { Component } from "react";
+import {
+    Text,
+    View,
+    TextInput,
+    StyleSheet,
+    Button,
+    TouchableOpacity,
+    TouchableHighlight,
+    ImageBackground
+} from "react-native";
 
-
-
-const Form = t.form.Form;
-
-
-const User = t.struct({
-
-    username: t.String,
-    password: t.String,
-
-})
-
-
+import Maps from "./Maps";
+import Home from "./Home.js";
 
 export default class Login extends Component {
     state = {
-        username: 'D',
-        password: 'D',
-        renderMap: false
-
-    }
+        username: "",
+        password: "",
+        renderMap: false,
+        correctInput: true,
+        hidden: true
+    };
     handleSubmit = () => {
         this.props.changeStateBool(true);
-
-
-
     };
     handleLogin = () => {
-        const value = this.input.getValue();
-
-
-        if (value.username === this.state.username && value.password === this.state.password) {
-
-            console.warn("handleLogin")
-            console.warn(this.props._getExperienceButtonOnPress)
-            this.props._getExperienceButtonOnPress()
-
-
-
-
+        if (this.state.username === "J" && this.state.password === "J") {
+            this.props._getExperienceButtonOnPress();
+        } else {
+            this.setState({ correctInput: false });
         }
-
-    }
+    };
     render() {
         return (
-            <ImageBackground source={require("./background.png")} style={{ width: '100%', height: '100%' }}>
-                < View >
-                    {!this.state.renderMap &&
-
+            <ImageBackground
+                source={require("./background.png")}
+                style={{ width: "100%", height: "100%" }}
+            >
+                <View>
+                    {!this.state.renderMap && (
                         <View style={styles.container}>
-                            <Form type={User} ref={type => (this.input = type)} style={styles.container} />
-                            <View style={{ marginBottom: 15 }}>
-                                <TouchableOpacity style={styles.buttonstyle}
-                                    activeOpacity={.5} onPress={this.handleLogin}><Text style={styles.text}>Login</Text></TouchableOpacity>
+                            <View style={styles.containerform}>
+                                <Text style={styles.formtext}>Username</Text>
+                                <TextInput
+                                    placeholder="UserName ..."
+                                    placeholderTextColor="white"
+                                    onChangeText={username =>
+                                        this.setState({ username, correctInput: true })
+                                    }
+                                    value={this.state.username}
+                                    style={styles.form}
+                                />
+                                <Text style={styles.formtext}>Password</Text>
+                                <TextInput
+                                    placeholder="Password ..."
+                                    secureTextEntry={this.state.hidden}
+                                    placeholderTextColor="white"
+                                    onChangeText={password =>
+                                        this.setState({ password, correctInput: true })
+                                    }
+                                    style={styles.form}
+                                    value={this.state.password}
+                                />
+                                {!this.state.correctInput && (
+                                    <Text style={styles.error}>
+                                        Incorrect password or username
+                  </Text>
+                                )}
                             </View>
-                            <TouchableOpacity style={styles.buttonstyle} onPress={this.handleSubmit}><Text style={styles.text}>Sign-up </Text></TouchableOpacity>
-                        </View >
-                    }
-                </View >
+                            <View style={{ marginBottom: 2 }}>
+                                <TouchableOpacity
+                                    style={styles.buttonstyle}
+                                    activeOpacity={0.5}
+                                    onPress={this.handleLogin}
+                                >
+                                    <Text style={styles.text}>Login</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    style={styles.buttonstyle}
+                                    onPress={this.handleSubmit}
+                                >
+                                    <Text style={styles.text}>Sign-up </Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    )}
+                </View>
             </ImageBackground>
-
-
         );
     }
 }
 
-const formstyle = {
-    opacity: 100,
-    backgroundColor: '#ffffff'
-}
 const styles = StyleSheet.create({
     container: {
         justifyContent: "center",
@@ -84,73 +100,47 @@ const styles = StyleSheet.create({
         opacity: 30
     },
     buttonstyle: {
-
         marginTop: 10,
         paddingTop: 8,
         paddingBottom: 8,
         marginLeft: 30,
         marginRight: 30,
-        backgroundColor: '#ffffff',
+        backgroundColor: "#ffffff",
         borderRadius: 10,
-        borderWidth: 1,
-
+        borderWidth: 1
     },
     text: {
-        alignSelf: 'center',
-        color: 'black',
+        alignSelf: "center",
+        color: "black",
         fontSize: 16,
-        fontWeight: '600',
+        fontWeight: "600",
         paddingTop: 5,
         paddingBottom: 5,
-        backgroundColor: '#ffffff'
+        backgroundColor: "#ffffff"
+    },
+    form: {
+        fontSize: 12,
+        backgroundColor: "black",
+        paddingTop: 5,
+        paddingBottom: 5,
+        borderRadius: 10,
+        color: "white"
+    },
+    formtext: {
+        fontSize: 18,
+        color: "black",
+
+        fontWeight: "900"
+    },
+    containerform: {
+        borderRadius: 20,
+        backgroundColor: "white",
+        padding: 10
+    },
+    error: {
+        color: "black"
+    },
+    textboxfield: {
+        color: "white"
     }
 });
-//             <View>
-
-//                 <Input style={this.Styles.input}
-//                     autoCapitalize="none"
-//                     onSubmitEditing={() => this.passwordInput.focus()}
-//                     autoCorrect={false}
-//                     keyboardType='email-address'
-//                     returnKeyType="next"
-//                     placeholder='Email or Mobile Num'
-//                     leftIcon={{ type: 'font-awesome', name: 'chevron-left' }}
-//                     placeholderTextColor='black' />
-
-
-
-//                 <Input style={this.Styles.input}
-//                     returnKeyType="go"
-//                     ref={(input) => this.passwordInput = input}
-//                     placeholder='Password'
-//                     placeholderTextColor='black'
-//                     leftIcon={{ type: 'font-awesome', name: 'chevron-right' }}
-//                     secureTextEntry />
-
-
-//             </View>
-//         )
-//     }
-//     Styles = StyleSheet.create({
-//         container: {
-//             padding: 20
-//         },
-//         input: {
-//             height: 40,
-//             backgroundColor: 'rgba(225,225,225,0.2)',
-//             marginBottom: 10,
-//             padding: 10,
-//             color: 'black'
-//         },
-//         buttonContainer: {
-//             backgroundColor: '#2980b6',
-//             paddingVertical: 15
-//         },
-//         buttonText: {
-//             color: 'black',
-//             textAlign: 'center',
-//             fontWeight: '700'
-//         }
-//     })
-
-// }
