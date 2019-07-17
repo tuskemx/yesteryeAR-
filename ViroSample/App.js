@@ -18,6 +18,7 @@ import { ViroARSceneNavigator } from 'react-viro';
 import Maps from './components/Maps';
 
 
+
 var sharedProps = {
   apiKey: '2DF60EAD-EC00-4D0A-83DA-96E20F6E3352'
 };
@@ -45,7 +46,6 @@ export default class ViroSample extends Component {
       sharedProps: sharedProps,
       activeExample: -1,
       loginBool: false,
-      GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG: true,
       place: false,
       homeBool: false
 
@@ -58,7 +58,7 @@ export default class ViroSample extends Component {
       this
     );
     this._exitViro = this._exitViro.bind(this);
-    // this._getMapWithCoords = this._getMapWithCoords.bind(this);
+    this._getMapWithCoords = this._getMapWithCoords.bind(this);
     // this.onBack = this.onBack.bind(this);
   }
 
@@ -72,6 +72,7 @@ export default class ViroSample extends Component {
   // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
   // if you are building a specific type of experience.
   render() {
+
     if (this.state.navigatorType == UNSET) {
       return this._getExperienceSelector();
     } else if (this.state.navigatorType == MAPS_NAVIGATOR_TYPE) {
@@ -157,7 +158,7 @@ export default class ViroSample extends Component {
 
   // This function returns an anonymous/lambda function to be used
   // by the experience selector buttons
-  _getExperienceButtonOnPress(navigatorType, place) {
+  _getExperienceButtonOnPress(navigatorType) {
 
     return () => {
 
@@ -169,16 +170,29 @@ export default class ViroSample extends Component {
     }
   }
 
-  _getMapWithCoords(MAPS_WITH_COORDS, place) {
+  _getMapWithCoords(a, place) {
+    console.warn(a, "mappcords")
+    console.warn(place, "insidegetmapwithcoords");
 
 
     return () => {
-      this.setState({
-        navigatorType: MAPS_WITH_COORDS,
-        place: place
-      })
+      console.warn("return check")
+      console.warn(a, "mapcords inside return")
+      console.log(place, "should be card inside return");
+
+      setTimeout(() => {
+        this.setState({
+          navigatorType: a,
+          place: place
+        }, () => {
+          console.warn(this.state.navigatorType, this.state.place, "ghghhgh")
+        })
+
+      }, 4 * 1100);
+
     }
   }
+
 
 
 
@@ -239,16 +253,17 @@ export default class ViroSample extends Component {
           </TouchableHighlight>
         </ImageBackground>
 
-      </View>
+      </View >
     )
   }
   _getHomePageNavigator() {
+
     return (
       <View>
         <HomePage
           getExperienceButtonOnPress={this._getExperienceButtonOnPress(HOME_NAVIGATOR_TYPE)
           }
-          getMapWithCoords={this._getMapsCoordsNavigator(MAPS_WITH_COORDS)}
+          getMapWithCoords={this._getMapWithCoords}
 
 
         />

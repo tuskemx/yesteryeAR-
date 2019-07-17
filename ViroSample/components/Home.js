@@ -15,6 +15,7 @@ import {
 
 
 
+
 const styles = StyleSheet.create({
     title: {
         color: "black",
@@ -85,8 +86,17 @@ export default class Homepage extends Component {
         //     longitudeDelta: 0.03
         // });
         let obj = "CARD"
+        const x = this.props.getMapWithCoords('MAPCOORDS', obj);
+        console.warn(x)
+        return (
+            <TouchableOpacity onPress={x()}>
+                <Image
+                    style={{ width: 70, height: 70 }}
+                    source={require('./back.png')}
+                />
+            </TouchableOpacity>
+        )
 
-        this.props.getMapWithCoords('MAPCOORDS', obj)
 
     };
 
@@ -131,7 +141,7 @@ export default class Homepage extends Component {
                             source={require('./back.png')}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={this.handleCardAssize} >
+                    <TouchableOpacity onPress={() => { this.handleCardAssize() }} >
                         <ImageBackground
                             source={require("./Assize.jpg")}
                             style={{ width: 400, height: 200 }}>
