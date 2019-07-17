@@ -7,11 +7,12 @@ import {
     Button,
     TouchableOpacity,
     TouchableHighlight,
-    ImageBackground
+    ImageBackground,
+    Image
 } from "react-native";
+import myData from "./database.json";
 
-import Maps from "./Maps";
-import Home from "./Home.js";
+
 
 export default class Login extends Component {
     state = {
@@ -24,8 +25,18 @@ export default class Login extends Component {
     handleSubmit = () => {
         this.props.changeStateBool(true);
     };
-    handleLogin = () => {
-        if (this.state.username === "J" && this.state.password === "J") {
+    handleLogin = value => {
+        const user = myData["users"];
+        const usernames = user.map(usernameObj => {
+            return usernameObj.username;
+        });
+        const passwords = user.map(usernameObj => {
+            return usernameObj.password;
+        });
+        if (
+            usernames.includes(value.username) &&
+            passwords.includes(value.password)
+        ) {
             this.props._getExperienceButtonOnPress();
         } else {
             this.setState({ correctInput: false });
@@ -35,11 +46,15 @@ export default class Login extends Component {
         return (
             <ImageBackground
                 source={require("./background.png")}
-                style={{ width: "100%", height: "100%" }}
+                style={styles.background}
             >
+                <View style={styles.image}>
+                    <Image source={require("./yes1.png")} style={styles.logo} />
+                </View>
                 <View>
                     {!this.state.renderMap && (
                         <View style={styles.container}>
+                            <Image source={require("./safety.png")} style={styles.safe} />
                             <View style={styles.containerform}>
                                 <Text style={styles.formtext}>Username</Text>
                                 <TextInput
@@ -72,7 +87,13 @@ export default class Login extends Component {
                                 <TouchableOpacity
                                     style={styles.buttonstyle}
                                     activeOpacity={0.5}
-                                    onPress={this.handleLogin}
+                                    onPress={() => {
+                                        const value = {
+                                            username: this.state.username,
+                                            password: this.state.password
+                                        };
+                                        this.handleLogin(value, myData);
+                                    }}
                                 >
                                     <Text style={styles.text}>Login</Text>
                                 </TouchableOpacity>
@@ -94,10 +115,26 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
     container: {
         justifyContent: "center",
-        marginTop: 50,
+        marginTop: 120,
         padding: 20,
         borderRadius: 50,
         opacity: 30
+    },
+    logo: {
+        justifyContent: "center",
+        alignSelf: "center",
+        width: 350,
+        height: 140,
+        marginTop: 5,
+        borderRadius: 80
+    },
+    image: {
+        flexDirection: "column"
+    },
+    background: {
+        width: "100%",
+        height: "100%",
+        opacity: 0.9
     },
     buttonstyle: {
         marginTop: 10,
@@ -129,6 +166,7 @@ const styles = StyleSheet.create({
     formtext: {
         fontSize: 18,
         color: "black",
+        marginTop: 10,
 
         fontWeight: "900"
     },
@@ -142,5 +180,11 @@ const styles = StyleSheet.create({
     },
     textboxfield: {
         color: "white"
+    },
+    safe: {
+        justifyContent: "flex-end",
+        alignSelf: "flex-end",
+        width: 100,
+        height: 20
     }
 });

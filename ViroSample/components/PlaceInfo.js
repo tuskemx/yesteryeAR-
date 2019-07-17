@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Text, View, StyleSheet, Modal, TouchableHighlight, Image, Button, Linking } from 'react-native'
+import { Text, View, StyleSheet, Modal, TouchableHighlight, Image, Button, Linking, TouchableOpacity } from 'react-native'
 import SlowRender from './SlowRender.js'
 
 
@@ -96,7 +96,7 @@ export default class PlaceInfo extends Component {
                             backgroundColor: 'blue'
                         }}>
                             <Text style={{ textDecorationLine: "underline" }} >
-                                {"\n"}{"\n"}{"\n"}{"\n"} {"\n"}{"\n"}{"\n"}{"\n"} {"\n"}{"\n"}{"\n"}{"\n"}
+                                {"\n"}{"\n"}{"\n"}
                                 Visitor List
 
 
@@ -107,23 +107,28 @@ export default class PlaceInfo extends Component {
                         </View>
 
                     </View >
-                    <Button
-                        style={{ fontSize: 20, color: 'green' }}
-                        styleDisabled={{ color: 'red' }}
-                        onPress={() => this._Open()}
-                        title="google maps">nav
-                         </Button>
-                    <Button
-                        style={{ fontSize: 20, color: 'green' }}
-                        styleDisabled={{ color: 'red' }}
-                        onPress={() => this.props.ChangeMapState()}
-                        title="back">back
-                         </Button>
-                    <Button
-                        style={{ fontSize: 20, color: 'green' }}
-                        styleDisabled={{ color: 'red' }}
-                        title="camera placeholder">camera placeholder
-                         </Button>
+                    <View style={styles.navbar}>
+                        <TouchableOpacity onPress={() => { this.props.ChangeMapState() }}>
+                            <Image
+                                style={{ width: 70, height: 70 }}
+                                source={require('./back.png')}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { this.props.ChangeMapState() }}>
+                            <Image
+                                style={{ width: 70, height: 70 }}
+                                source={require('./camera.png')}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { this._Open() }}>
+                            <Image
+                                style={{ width: 70, height: 70 }}
+                                source={require('./nav.png')}
+                            />
+                        </TouchableOpacity>
+
+
+                    </View>
 
                 </SlowRender>
             </Fragment>
@@ -144,5 +149,11 @@ const styles = StyleSheet.create({
     },
     map: {
         ...StyleSheet.absoluteFillObject
+    },
+    navbar: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: 115
     }
 });

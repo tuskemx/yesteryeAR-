@@ -7,6 +7,7 @@ import PlaceInfo from './PlaceInfo';
 
 
 
+
 export default class Maps extends Component {
   state = {
     color: '#FF0000',
@@ -83,9 +84,7 @@ export default class Maps extends Component {
 
   render() {
 
-
-
-
+    console.warn(this.props.place, "dddddddddddddd");
 
     const piccadilly = {
       latitude: 53.4810, longitude: -2.2369, title: "Piccadilly Gardens, 1952", description: "Piccadilly Gardens", visitors: 12, url: 'Piccadilly', visitorNames: ['Sandy', 'Brandy', 'Mandy']

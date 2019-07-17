@@ -12,6 +12,7 @@ import {
 
 import Login from './components/Login'
 import SignUp from './components/Signup';
+import HomePage from './components/Home';
 
 import { ViroARSceneNavigator } from 'react-viro';
 import Maps from './components/Maps';
@@ -25,9 +26,11 @@ var sharedProps = {
 var InitialARScene = require('./js/HelloWorldSceneAR');
 
 var UNSET = 'UNSET';
-var HOME = 'Home';
+var HOME_NAVIGATOR_TYPE = 'HOME';
 var AR_NAVIGATOR_TYPE = 'AR';
 var MAPS_NAVIGATOR_TYPE = 'MAPs';
+var HOMEPAGE_NAVIGATOR_TYPE = 'HOMEPAGE'
+var MAPS_WITH_COORDS = 'MAPCOORDS'
 
 // This determines which type of experience to launch in, or UNSET, if the user should
 // be presented with a choice of AR or VR. By default, we offer the user a choice.
@@ -42,7 +45,10 @@ export default class ViroSample extends Component {
       sharedProps: sharedProps,
       activeExample: -1,
       loginBool: false,
+      GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG: true,
+      place: false,
       homeBool: false
+
     };
 
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
@@ -52,9 +58,10 @@ export default class ViroSample extends Component {
       this
     );
     this._exitViro = this._exitViro.bind(this);
-
+    // this._getMapWithCoords = this._getMapWithCoords.bind(this);
     // this.onBack = this.onBack.bind(this);
   }
+
 
   addNinja = ninja => { };
 
@@ -68,12 +75,18 @@ export default class ViroSample extends Component {
     if (this.state.navigatorType == UNSET) {
       return this._getExperienceSelector();
     } else if (this.state.navigatorType == MAPS_NAVIGATOR_TYPE) {
-      return this._getMapsNavigator();
+      return this._getMapsNavigator(this.state.place);
     } else if (this.state.navigatorType == AR_NAVIGATOR_TYPE) {
       return this._getARNavigator();
     }
-    else if (this.state.navigatorType == HOME) {
+    else if (this.state.navigatorType == HOME_NAVIGATOR_TYPE) {
       return this._getHomeNavigator();
+    }
+    else if (this.state.navigatorType == HOMEPAGE_NAVIGATOR_TYPE) {
+      return this._getHomePageNavigator();
+    }
+    else if (this.state.navigatorType == MAPS_WITH_COORDS) {
+      return this._getMapsCoordsNavigator();
     }
 
   }
@@ -94,7 +107,7 @@ export default class ViroSample extends Component {
                 onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
                 underlayColor={'#68a0ff'}
               >
-                <Text style={localStyles.buttonText}>AR</Text>
+                <Text style={localStyles.buttonText}>THIS USED TO BE AR</Text>
               </TouchableHighlight>
 
               <TouchableHighlight
@@ -102,14 +115,14 @@ export default class ViroSample extends Component {
                 onPress={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
                 underlayColor={'#FF0000'}
               >
-                <Text style={localStyles.buttonText}>MAPS</Text>
+                <Text style={localStyles.buttonText}>THIS USED TO BE MAP</Text>
               </TouchableHighlight>
             </View>
           </View>
         </View>
         <View>
           {this.state.loginBool === false &&
-            <Login changeStateBool={this.changeStateBool} _getExperienceButtonOnPress={this._getExperienceButtonOnPress(HOME)} />
+            <Login changeStateBool={this.changeStateBool} _getExperienceButtonOnPress={this._getExperienceButtonOnPress(HOME_NAVIGATOR_TYPE)} />
           }
           {this.state.loginBool &&
             <SignUp changeStateBool={this.changeStateBool} />
@@ -144,27 +157,79 @@ export default class ViroSample extends Component {
 
   // This function returns an anonymous/lambda function to be used
   // by the experience selector buttons
-  _getExperienceButtonOnPress(navigatorType) {
+  _getExperienceButtonOnPress(navigatorType, place) {
+
     return () => {
 
       this.setState({
-        navigatorType: navigatorType
-      });
-    };
+
+        navigatorType: navigatorType,
+
+      })
+    }
   }
 
+  _getMapWithCoords(MAPS_WITH_COORDS, place) {
+
+
+    return () => {
+      this.setState({
+        navigatorType: MAPS_WITH_COORDS,
+        place: place
+      })
+    }
+  }
+
+
+
   _getMapsNavigator() {
+
+
     return (
       <Maps
-        getExperienceButtonOnPress={this._getExperienceButtonOnPress(HOME)
-        }
+        getExperienceButtonOnPress={this._getExperienceButtonOnPress(HOME_NAVIGATOR_TYPE)}
       />
-    );
+    )
+
   }
+
+  _getMapsCoordsNavigator() {
+
+
+    return (
+      <Maps getExperienceButtonOnPress={this._getExperienceButtonOnPress(HOME_NAVIGATOR_TYPE)}
+        place={this.state.place}
+      />
+    )
+
+  }
+
+  // _getHomeNavigatorcurrentlynotinuse() {
+  //   return (
+  //     <View>
+  //       <ImageBackground source={require("./components/background.png")} style={{ width: '100%', height: '100%' }}>
+  //         <TouchableHighlight
+  //           style={localStyles.buttonstyle}
+  //           onPress={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE, "COORDS")}
+  //           underlayColor={'#FF0000'} >
+  //           <Text style={localStyles.text}>MAPS</Text>
+  //         </TouchableHighlight>
+  //       </ImageBackground>
+
+  //     </View>
+  //   )
+  // }
   _getHomeNavigator() {
     return (
       <View>
         <ImageBackground source={require("./components/background.png")} style={{ width: '100%', height: '100%' }}>
+          <TouchableHighlight
+            style={localStyles.buttonstyle}
+            onPress={this._getExperienceButtonOnPress(HOMEPAGE_NAVIGATOR_TYPE)}
+            underlayColor={'#FF0000'}
+          >
+            <Text style={localStyles.text}>HOME PAGE</Text>
+          </TouchableHighlight>
           <TouchableHighlight
             style={localStyles.buttonstyle}
             onPress={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
@@ -177,13 +242,20 @@ export default class ViroSample extends Component {
       </View>
     )
   }
-  // _getHomeNavigator() {
-  //   return (
-  //     <
-  //       getExperienceButtonOnPress={this._getExperienceButtonOnPress(HOME)}
-  //     />
-  //   );
-  // }
+  _getHomePageNavigator() {
+    return (
+      <View>
+        <HomePage
+          getExperienceButtonOnPress={this._getExperienceButtonOnPress(HOME_NAVIGATOR_TYPE)
+          }
+          getMapWithCoords={this._getMapsCoordsNavigator(MAPS_WITH_COORDS)}
+
+
+        />
+      </View>
+    )
+  }
+
 
   // This function "exits" Viro by setting the navigatorType to UNSET.
   _exitViro() {
