@@ -57,35 +57,17 @@ const styles = StyleSheet.create({
 });
 
 export default class Homepage extends Component {
-    state = {
-        map: false,
-        latitude: 0,
-        longitude: 0,
-        latitudeDelta: 0,
-        longitudeDelta: 0
-    };
-
-    // componentDidMount() {
-    //   const arrayOfObjects = [];
-    //   db.collection("locations")
-    //     .get()
-    //     .then(snapshot => {
-    //       snapshot.forEach(doc => {
-    //         arrayOfObjects.push(doc.data());
-    //       });
-    //       this.setState({ locations: arrayOfObjects });
-    //     });
-    // }
 
     handleCardAssize = event => {
-        // this.setState({
-        //     mapView: true,
-        //     latitude: 53.492021,
-        //     longitude: -2.246167,
-        //     latitudeDelta: 0.03,
-        //     longitudeDelta: 0.03
-        // });
-        let obj = "CARD"
+
+
+
+        let obj = {
+            latitude: 53.492021,
+            longitude: -2.246167,
+            latitudeDelta: 0.03,
+            longitudeDelta: 0.03
+        }
         const x = this.props.getMapWithCoords('MAPCOORDS', obj);
         console.warn(x)
         return (
@@ -101,66 +83,97 @@ export default class Homepage extends Component {
     };
 
     handleCardVictoria = event => {
-        this.setState({
-            mapView: true,
+
+        let obj = {
             latitude: 53.487284,
             longitude: -2.242343,
             latitudeDelta: 0.03,
             longitudeDelta: 0.03
-        });
+        }
+        const x = this.props.getMapWithCoords('MAPCOORDS', obj);
+        console.warn(x)
+        return (
+            <TouchableOpacity onPress={x()}>
+                <Image
+                    style={{ width: 70, height: 70 }}
+                    source={require('./back.png')}
+                />
+            </TouchableOpacity>
+        )
     };
 
     handleCardHulme = event => {
-        this.setState({
-            mapView: true,
+
+        let obj = {
+
             latitude: 53.46918,
             longitude: -2.2403,
             latitudeDelta: 0.03,
             longitudeDelta: 0.03
-        });
+        }
+        const x = this.props.getMapWithCoords('MAPCOORDS', obj);
+        console.warn(x)
+        return (
+            <TouchableOpacity onPress={x()}>
+                <Image
+                    style={{ width: 70, height: 70 }}
+                    source={require('./back.png')}
+                />
+            </TouchableOpacity>
+        )
     };
 
     handleCardPicadilly = event => {
-        this.setState({
-            mapView: true,
+
+        let obj = {
             latitude: 53.46918,
             longitude: -2.2403,
             latitudeDelta: 0.03,
             longitudeDelta: 0.03
-        });
+        }
+        const x = this.props.getMapWithCoords('MAPCOORDS', obj);
+        console.warn(x)
+        return (
+            <TouchableOpacity onPress={x()}>
+                <Image
+                    style={{ width: 70, height: 70 }}
+                    source={require('./back.png')}
+                />
+            </TouchableOpacity>
+        )
     };
 
     render() {
-        if (!this.state.mapView) {
-            return (
-                <View>
 
-                    <TouchableOpacity onPress={this.props.getExperienceButtonOnPress}>
-                        <Image
-                            style={{ width: 70, height: 70 }}
-                            source={require('./back.png')}
-                        />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { this.handleCardAssize() }} >
-                        <ImageBackground
-                            source={require("./Assize.jpg")}
-                            style={{ width: 400, height: 200 }}>
-                            <Text style={styles.title}>Manchester Assize Courts</Text>
-                            {/* <Text style={styles.text}>
+        return (
+            <View>
+
+                <TouchableOpacity onPress={this.props.getExperienceButtonOnPress}>
+                    <Image
+                        style={{ width: 70, height: 70 }}
+                        source={require('./back.png')}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => { this.handleCardAssize() }} >
+                    <ImageBackground
+                        source={require("./Assize.jpg")}
+                        style={{ width: 400, height: 200 }}>
+                        <Text style={styles.title}>Manchester Assize Courts</Text>
+                        {/* <Text style={styles.text}>
               The Manchester Assize Courts were law courts on Great Ducie Street
               in the Strangeways district of Manchester, England. It was 279 ft
               (85 m) tall and from 1864 to 1877 the tallest building in
               Manchester. Widely admired,[1] it has been referred to as one of
               Britain's 'lost buildings'.{" "}
             </Text> */}
-                        </ImageBackground>
-                    </TouchableOpacity >
-                    <TouchableOpacity onPress={this.handleCardVictoria}>
-                        <ImageBackground
-                            source={require('./victoria.jpg')}
-                            style={{ width: 400, height: 200 }}>
-                            <Text style={styles.title}>Victoria Station</Text>
-                            {/* <Text style={styles.text}>
+                    </ImageBackground>
+                </TouchableOpacity >
+                <TouchableOpacity onPress={() => { this.handleCardVictoria() }}>
+                    <ImageBackground
+                        source={require('./victoria.jpg')}
+                        style={{ width: 400, height: 200 }}>
+                        <Text style={styles.title}>Victoria Station</Text>
+                        {/* <Text style={styles.text}>
             The Manchester and Le eds Railway (M&LR) was founded in 1836 and the
             company began building its line between Manchester and Leeds in
             1837. Originally its line terminated at Manchester Oldham Road which
@@ -168,27 +181,27 @@ export default class Homepage extends Component {
             to join its line to the Liverpool and Manchester Railway (L&MR)
             creating a through route from Liverpool to Yorkshire with a joint
             station serving the centre of Manchester. */}
-                            {/* </Text> */}
-                        </ImageBackground>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={this.handleCardHulme}>
-                        <ImageBackground
-                            source={require("./hulmefire.jpg")}
-                            style={{ width: 400, height: 200 }} >
-                            <Text style={styles.title}>Opal Halls MMU</Text>
-                            {/* <Text style={styles.text}>
+                        {/* </Text> */}
+                    </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => { this.handleCardHulme() }}>
+                    <ImageBackground
+                        source={require("./hulmefire.jpg")}
+                        style={{ width: 400, height: 200 }} >
+                        <Text style={styles.title}>Opal Halls MMU</Text>
+                        {/* <Text style={styles.text}>
             MMU halls are now build on the site after a serious fire took place
             causing the building to dramatically collapse.
           </Text> */}
-                        </ImageBackground>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={this.handleCardPicadilly}>
-                        <ImageBackground
-                            source={require("./piccadilly.jpg")}
-                            style={{ width: 400, height: 200 }}
-                        >
-                            <Text style={styles.title}>Picadilly Gardens</Text>
-                            {/* <Text style={styles.text}>
+                    </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => { this.handleCardPicadilly() }}>
+                    <ImageBackground
+                        source={require("./piccadilly.jpg")}
+                        style={{ width: 400, height: 200 }}
+                    >
+                        <Text style={styles.title}>Picadilly Gardens</Text>
+                        {/* <Text style={styles.text}>
             Before 1755: The area was occupied by water-filled clay pits called
             the Daub Holes. The Lord of the Manor donated the site and the pits
             were replaced by a fine ornamental pond. 1914: After several years
@@ -199,11 +212,10 @@ export default class Homepage extends Component {
             move to Manchester Central Library. The sunken garden was a remnant
             of the hospital's basement.
           </Text> */}
-                        </ImageBackground>
+                    </ImageBackground>
 
-                    </TouchableOpacity>
-                </View >
-            );
-        }
+                </TouchableOpacity>
+            </View >
+        );
     }
 }

@@ -188,7 +188,7 @@ export default class ViroSample extends Component {
           console.warn(this.state.navigatorType, this.state.place, "ghghhgh")
         })
 
-      }, 4 * 1100);
+      }, 4 * 300);
 
     }
   }

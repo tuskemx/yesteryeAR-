@@ -14,7 +14,11 @@ export default class Maps extends Component {
     placeInfo: '',
     err: '',
     isPopupTrue: true,
-    isMapReady: false
+    isMapReady: false,
+    longitude: '',
+    latitude: '',
+    latitudeDelta: '',
+    longitudeDelta: ''
   };
 
   handlePress = () => {
@@ -45,22 +49,29 @@ export default class Maps extends Component {
 
 
   componentDidMount() {
-
-
-    Vibration.vibrate();
-    Geolocation.getCurrentPosition((info) => {
-      this.setState({
-        latitude: info.coords.latitude,
-        longitude: info.coords.longitude,
-
-      });
-    });
-
-
-
     setTimeout(() => {
       this.setState({ isMapReady: true })
     }, 5 * 250)
+
+    Vibration.vibrate();
+    if (this.props.place.latitude) {
+      this.setState({
+        latitude: this.props.place.latitude,
+        longitude: this.props.place.longitude,
+        longitudeDelta: this.props.place.longitudeDelta,
+        latitudeDelta: this.props.place.latitudeDelta
+      })
+
+    }
+    if (!this.props.place.latitude) {
+      this.setState({
+        latitude: 53.480759,
+        longitude: -2.242631,
+        latitudeDelta: 0.015,
+        longitudeDelta: 0.0121
+      })
+    }
+
 
   }
 
@@ -120,10 +131,10 @@ export default class Maps extends Component {
             // onMapReady={() => { this.ChangeMapState() }}
             style={{ flex: 1 }}
             region={{
-              latitude: 53.480759,
-              longitude: -2.242631,
-              latitudeDelta: 0.015,
-              longitudeDelta: 0.0121
+              latitude: this.state.latitude,
+              longitude: this.state.longitude,
+              latitudeDelta: this.state.latitudeDelta,
+              longitudeDelta: this.state.longitudeDelta
             }}
           >
 
