@@ -3,6 +3,7 @@ import Geolocation from '@react-native-community/geolocation'
 import React, { Component, Fragment } from 'react';
 import { Text, View, StyleSheet, Button, TouchableHighlight, Vibration, Image, Linking } from 'react-native';
 import PlaceInfo from './PlaceInfo';
+import { getDistanceFromLatLonInKm } from './utils/utils'
 
 
 
@@ -79,7 +80,8 @@ export default class Maps extends Component {
   }
 
   markerClick = (placeInfo) => {
-
+    const x = getDistanceFromLatLonInKm(53.4, -2.23, 53.3, -2.25) // create distance between your locaton and current location to work out proximity
+    console.warn(x);
     setTimeout(() => {
       this.setState({ placeInfo: placeInfo })
     }, 5 * 100)
@@ -101,21 +103,21 @@ export default class Maps extends Component {
     console.warn(this.props.place, "dddddddddddddd");
 
     const piccadilly = {
-      latitude: 53.4810, longitude: -2.2369, title: "Piccadilly Gardens, 1952", description: "Piccadilly Gardens", visitors: 12, url: 'Piccadilly', visitorNames: ['Sandy', 'Brandy', 'Mandy']
+      latitude: 53.4810, longitude: -2.2369, title: "Piccadilly Gardens, 1952", description: "Piccadilly Gardens", visitors: 12, url: 'Piccadilly', visitorNames: ['Keanu Reeves', 'Barry Scott']
     }
 
     const hmp = {
-      latitude: 53.49175, longitude: -2.24567, title: "Strangeways Prison", description: "Assize Courts", url: 'Strangeways', visitors: 5
+      latitude: 53.49175, longitude: -2.24567, title: "Strangeways Prison", description: "Assize Courts", url: 'Strangeways', visitors: 5, visitorNames: ['Keanu Reeves', 'Barry Scott']
     }
     const hulme = {
-      latitude: 53.469053, longitude: -2.240609, title: "Pauldens Fire, Cavendish Street", description: "Paulden's Fire", url: 'hulme', visitors: 5
+      latitude: 53.469053, longitude: -2.240609, title: "Pauldens Fire, Cavendish Street", description: "Paulden's Fire", url: 'hulme', visitors: 5, visitorNames: ['Keanu Reeves', 'Barry Scott']
     }
     const victoria = {
-      latitude: 53.487539, longitude: -2.242396, title: "Victoria Station", description: "quarter to nine - feeling fine", url: 'victoria', visitors: 5
+      latitude: 53.487539, longitude: -2.242396, title: "Victoria Station", description: "quarter to nine - feeling fine", url: 'victoria', visitors: 5, visitorNames: ['Keanu Reeves', 'Barry Scott']
     }
 
     const mancoats = {
-      latitude: 53.484952, longitude: -2.225563, title: "Man in Ancoats", description: "Man/c + coat in Ancoats = Mancoats", url: 'mancoats', visitors: 7
+      latitude: 53.484952, longitude: -2.225563, title: "Man in Ancoats", description: "Man/c + coat in Ancoats = Mancoats", url: 'mancoats', visitors: 7, visitorNames: ['Keanu Reeves', 'Barry Scott']
     }
     return (
 
@@ -198,8 +200,7 @@ export default class Maps extends Component {
           accessibilityLabel="Navigate back a page"
         />
 
-        {
-          !this.state.isPopupTrue &&
+        {!this.state.isPopupTrue &&
           <View>
             <PlaceInfo info={this.state.placeInfo} ChangeMapState={this.ChangeMapState} />
 

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Text, View, StyleSheet, Modal, TouchableHighlight, Image, Button, Linking, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, Modal, TouchableHighlight, Image, Button, Linking, TouchableOpacity, TouchableNativeFeedback } from 'react-native'
 import SlowRender from './SlowRender.js'
 
 
@@ -7,13 +7,11 @@ import SlowRender from './SlowRender.js'
 
 
 export default class PlaceInfo extends Component {
-    constructor() {
-        super();
 
-        this.state = {
+    state = {
+        person: ''
+    };
 
-        };
-    }
 
     _Open = () => {
         const scheme = 'geo:0,0?q='
@@ -24,23 +22,31 @@ export default class PlaceInfo extends Component {
         const url = `${scheme}${latLng}(${label})`
         Linking.openURL(url);
     }
+    addVisitor = (placeholder) => {
+        this.setState({ person: placeholder })
+    }
     render() {
         const names = this.props.info.visitorNames
 
+
         return (
-            <Fragment>
+            <View style={{
+                flex: 1,
+                flexDirection: 'column',
+                alignContent: 'space-around'
+            }}>
                 <SlowRender>
-                    <View>
+                    <View  >
 
 
                         {this.props.info.url === 'Piccadilly' &&
-                            <View>
+                            <View >
 
                                 <Image source={require('./piccadilly.jpg')} resizeMode="contain" style={{ width: 360, height: 250 }} />
                                 <Text style={{ fontSize: 30 }}>{this.props.info.title}</Text>
-                                <Text style={{ fontSize: 15 }}>{this.props.info.visitors} visitors </Text>
+                                <Text style={{ fontSize: 15 }}>Visitors: {names[0]}, {names[1]}, {this.state.person}  </Text>
 
-                                <Text style={{ fontSize: 25 }}>{"\n"}Quite a different affair when compared to the bustling array of bus and tram stops today... </Text>
+                                <Text style={{ fontSize: 20 }}>{"\n"}Quite a different affair when compared to the bustling array of bus and tram stops today... </Text>
 
                             </View>
                         }
@@ -48,10 +54,10 @@ export default class PlaceInfo extends Component {
                         {this.props.info.url === 'Strangeways' &&
                             <View>
 
-                                <Image source={require('./Assize1.jpg')} resizeMode="contain" style={{ width: 360, height: 250 }} />
+                                <Image source={require('./Assize1.jpg')} resizeMode="contain" style={{ width: 360, height: 150 }} />
                                 <Text style={{ fontSize: 30 }}>{this.props.info.title}</Text>
-                                <Text style={{ fontSize: 15 }}>Visitors {this.props.info.visitors} </Text>
-                                <Text style={{ fontSize: 25 }}>{"\n"}Assize Courts in the Strangeways district, once the tallest building in Manchester. Destroyed in the Blitz in 1940, Strangeways Prison standing in its place. </Text>
+                                <Text style={{ fontSize: 15 }}>Visitors:  {names[0]}, {names[1]}, {this.state.person} </Text>
+                                <Text style={{ fontSize: 20 }}>{"\n"}Assize Courts in the Strangeways district, once the tallest building in Manchester. Destroyed in the Blitz in 1940, Strangeways Prison standing in its place. </Text>
 
 
                             </View>
@@ -59,10 +65,10 @@ export default class PlaceInfo extends Component {
                         {this.props.info.url === 'hulme' &&
                             <View>
 
-                                <Image source={require('./hulmefire.jpg')} resizeMode="contain" style={{ width: 360, height: 250 }} />
+                                <Image source={require('./hulmefire.jpg')} resizeMode="contain" style={{ width: 360, height: 150 }} />
                                 <Text style={{ fontSize: 30 }}>{this.props.info.title}</Text>
-                                <Text style={{ fontSize: 15 }}>Visitors {this.props.info.visitors} </Text>
-                                <Text style={{ fontSize: 25 }}>{"\n"}The scene of Paulden's fire on Cavendish Street in Hulme, Manchester in 1957. Now Opal Halls, student accomodation for MMU </Text>
+                                <Text style={{ fontSize: 15 }}>Visitors:  {names[0]}, {names[1]}, {this.state.person} </Text>
+                                <Text style={{ fontSize: 20 }}>{"\n"}The scene of Paulden's fire on Cavendish Street in Hulme, Manchester in 1957. Now Opal Halls, student accomodation for MMU </Text>
 
 
                             </View>
@@ -72,8 +78,8 @@ export default class PlaceInfo extends Component {
 
                                 <Image source={require('./victoria.jpg')} resizeMode="contain" style={{ width: 360, height: 250 }} />
                                 <Text style={{ fontSize: 30 }}>{this.props.info.title}</Text>
-                                <Text style={{ fontSize: 15 }}>Visitors {this.props.info.visitors} </Text>
-                                <Text style={{ fontSize: 25 }}>{"\n"}Quarter to Nine, feeling fine. Victoria station.</Text>
+                                <Text style={{ fontSize: 15 }}>Visitors:  {names[0]}, {names[1]}, {this.state.person} </Text>
+                                <Text style={{ fontSize: 20 }}>{"\n"}Quarter to Nine, feeling fine. Victoria station.</Text>
 
 
                             </View>
@@ -82,19 +88,26 @@ export default class PlaceInfo extends Component {
                             <View>
                                 <Image source={require('./mancoats.jpg')} resizeMode="contain" style={{ width: 360, height: 250 }} />
                                 <Text style={{ fontSize: 30 }}>{this.props.info.title}</Text>
-                                <Text style={{ fontSize: 15 }}>Visitors {this.props.info.visitors} </Text>
-                                <Text style={{ fontSize: 25 }}>{"\n"}A man, in Manc, wearing a coat, walking in Ancoats.. Mancoats! - Jersey Street</Text>
+                                <Text style={{ fontSize: 15 }}>Visitors:  {names[0]}, {names[1]}, {this.state.person} </Text>
+                                <Text style={{ fontSize: 20 }}>{"\n"}A man, in Manc, wearing a coat, walking in Ancoats.. Mancoats! - Jersey Street</Text>
 
 
                             </View>
                         }
-
                         <View style={{
                             flex: 1,
                             alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: 'blue'
+                            justifyContent: 'flex-end',
+                            position: 'absolute'
+
                         }}>
+                            <TouchableOpacity onPress={() => { this.addVisitor('Placeholder') }}>
+                                <Image
+                                    style={{ width: 70, height: 70 }}
+                                    source={require('./addVisitor.png')}
+                                />
+                            </TouchableOpacity>
+                            {/* 
                             <Text style={{ textDecorationLine: "underline" }} >
                                 {"\n"}{"\n"}{"\n"}
                                 Visitor List
@@ -102,37 +115,37 @@ export default class PlaceInfo extends Component {
 
                     </Text>
                             <Text>  {"\n"}
-                                {names}</Text>
+                                {names[0]}{"\n"}
+                                {names[1]}</Text> */}
 
                         </View>
 
                     </View >
                     <View style={styles.navbar}>
-                        <TouchableOpacity onPress={() => { this.props.ChangeMapState() }}>
+                        <TouchableNativeFeedback onPress={() => { this.props.ChangeMapState() }}>
                             <Image
                                 style={{ width: 70, height: 70 }}
                                 source={require('./back.png')}
                             />
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => { this.props.ChangeMapState() }}>
+                        </TouchableNativeFeedback>
+                        <TouchableNativeFeedback onPress={() => { this.props.ChangeMapState() }}>
                             <Image
                                 style={{ width: 70, height: 70 }}
                                 source={require('./camera.png')}
                             />
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => { this._Open() }}>
+                        </TouchableNativeFeedback>
+                        <TouchableNativeFeedback onPress={() => { this._Open() }}>
                             <Image
                                 style={{ width: 70, height: 70 }}
                                 source={require('./nav.png')}
                             />
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
 
 
                     </View>
 
                 </SlowRender>
-            </Fragment>
-
+            </View>
         )
     }
 }
@@ -153,7 +166,6 @@ const styles = StyleSheet.create({
     navbar: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
-        marginTop: 115
+        marginTop: 550
     }
 });

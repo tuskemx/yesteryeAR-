@@ -49,7 +49,7 @@ export default class Login extends Component {
                 style={styles.background}
             >
                 <View style={styles.image}>
-                    <Image source={require("./yes1.png")} style={styles.logo} />
+                    <Image source={require("./yester.png")} style={styles.logo} />
                 </View>
                 <View>
                     {!this.state.renderMap && (
