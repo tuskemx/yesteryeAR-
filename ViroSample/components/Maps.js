@@ -54,7 +54,7 @@ export default class Maps extends Component {
     }, 5 * 250)
 
     Vibration.vibrate();
-    if (this.props.place.latitude) {
+    if (this.props.place) {
       this.setState({
         latitude: this.props.place.latitude,
         longitude: this.props.place.longitude,
@@ -63,7 +63,7 @@ export default class Maps extends Component {
       })
 
     }
-    if (!this.props.place.latitude) {
+    if (!this.props.place) {
       this.setState({
         latitude: 53.480759,
         longitude: -2.242631,
