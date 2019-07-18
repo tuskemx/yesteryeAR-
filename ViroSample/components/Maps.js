@@ -64,12 +64,15 @@ export default class Maps extends Component {
 
     }
     if (!this.props.place) {
-      this.setState({
-        latitude: 53.480759,
-        longitude: -2.242631,
-        latitudeDelta: 0.015,
-        longitudeDelta: 0.0121
-      })
+      Geolocation.getCurrentPosition((info) => {
+        this.setState({
+          latitude: info.coords.latitude,
+          longitude: info.coords.longitude,
+          latitudeDelta: 0.03,
+          longitudeDelta: 0.03
+
+        });
+      });
     }
 
 
