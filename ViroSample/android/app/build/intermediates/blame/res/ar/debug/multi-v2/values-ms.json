@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "/home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/android/app/build/intermediates/incremental/mergeArDebugResources/merged.dir/values-ms/values-ms.xml",
+            "outputFile": "/home/tuskem/Desktop/mine/yesteryeAR-1.0/ViroSample/android/app/build/intermediates/incremental/mergeArDebugResources/merged.dir/values-ms/values-ms.xml",
             "map": [
-                {
-                    "source": "/home/tuskem/.gradle/caches/transforms-1/files-1.1/core-1.7.0.aar/4b1b440b64d7c56e017a6df076ae0438/res/values-ms/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8",
-                        "startColumns": "0,0,0,0,0",
-                        "startOffsets": "190,236,287,385,483",
-                        "endColumns": "45,50,97,97,60",
-                        "endOffsets": "235,286,384,482,543"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "105,155,210,312,414",
-                        "endColumns": "49,54,101,101,64",
-                        "endOffsets": "150,205,307,409,474"
-                    }
-                },
                 {
                     "source": "/home/tuskem/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/e27a43601472cc73648088c6adc5cef3/res/values-ms/values.xml",
                     "from": {
@@ -86,6 +69,23 @@
                         "startOffsets": "3175,3283,3488,3620,3728,3959,4093,4243,4584,4828,4939,5145,5282,5512,5717,5814,5908",
                         "endColumns": "107,204,131,107,230,133,149,135,243,110,205,136,229,204,96,93,111",
                         "endOffsets": "3278,3483,3615,3723,3954,4088,4238,4374,4823,4934,5140,5277,5507,5712,5809,5903,6015"
+                    }
+                },
+                {
+                    "source": "/home/tuskem/.gradle/caches/transforms-1/files-1.1/core-1.7.0.aar/48d00a83dc7761e230f3f08d4d96f216/res/values-ms/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8",
+                        "startColumns": "0,0,0,0,0",
+                        "startOffsets": "190,236,287,385,483",
+                        "endColumns": "45,50,97,97,60",
+                        "endOffsets": "235,286,384,482,543"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "105,155,210,312,414",
+                        "endColumns": "49,54,101,101,64",
+                        "endOffsets": "150,205,307,409,474"
                     }
                 }
             ]

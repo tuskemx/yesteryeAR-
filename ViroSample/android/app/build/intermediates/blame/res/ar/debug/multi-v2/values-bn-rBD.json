@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/android/app/build/intermediates/incremental/mergeArDebugResources/merged.dir/values-bn-rBD/values-bn-rBD.xml",
+            "outputFile": "/home/tuskem/Desktop/mine/yesteryeAR-1.0/ViroSample/android/app/build/intermediates/incremental/mergeArDebugResources/merged.dir/values-bn-rBD/values-bn-rBD.xml",
             "map": [
                 {
                     "source": "/home/tuskem/.gradle/caches/transforms-1/files-1.1/exoplayer-ui-2.7.1.aar/37ec7eb72c360a2a0e6e19a4e8fb37eb/res/values-bn-rBD/values-bn-rBD.xml",

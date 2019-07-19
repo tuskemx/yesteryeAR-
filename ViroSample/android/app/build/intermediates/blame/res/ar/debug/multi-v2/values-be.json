@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/android/app/build/intermediates/incremental/mergeArDebugResources/merged.dir/values-be/values-be.xml",
+            "outputFile": "/home/tuskem/Desktop/mine/yesteryeAR-1.0/ViroSample/android/app/build/intermediates/incremental/mergeArDebugResources/merged.dir/values-be/values-be.xml",
             "map": [
                 {
                     "source": "/home/tuskem/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/2cfc9bbdbdb913f0629d21a58d62e42c/res/values-be/values-be.xml",
@@ -18,6 +18,23 @@
                         "startOffsets": "6023",
                         "endColumns": "100",
                         "endOffsets": "6119"
+                    }
+                },
+                {
+                    "source": "/home/tuskem/.gradle/caches/transforms-1/files-1.1/core-1.7.0.aar/48d00a83dc7761e230f3f08d4d96f216/res/values-be/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8",
+                        "startColumns": "0,0,0,0,0",
+                        "startOffsets": "190,240,288,389,493",
+                        "endColumns": "49,47,100,103,63",
+                        "endOffsets": "239,287,388,492,556"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "105,159,211,316,424",
+                        "endColumns": "53,51,104,107,67",
+                        "endOffsets": "154,206,311,419,487"
                     }
                 },
                 {
@@ -69,23 +86,6 @@
                         "startOffsets": "4383",
                         "endColumns": "204",
                         "endOffsets": "4583"
-                    }
-                },
-                {
-                    "source": "/home/tuskem/.gradle/caches/transforms-1/files-1.1/core-1.7.0.aar/4b1b440b64d7c56e017a6df076ae0438/res/values-be/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8",
-                        "startColumns": "0,0,0,0,0",
-                        "startOffsets": "190,240,288,389,493",
-                        "endColumns": "49,47,100,103,63",
-                        "endOffsets": "239,287,388,492,556"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "105,159,211,316,424",
-                        "endColumns": "53,51,104,107,67",
-                        "endOffsets": "154,206,311,419,487"
                     }
                 }
             ]

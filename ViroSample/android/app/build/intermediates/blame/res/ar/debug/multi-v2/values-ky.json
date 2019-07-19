@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/tuskem/Desktop/componentsforapp/yesteryeAR-1.0/ViroSample/android/app/build/intermediates/incremental/mergeArDebugResources/merged.dir/values-ky/values-ky.xml",
+            "outputFile": "/home/tuskem/Desktop/mine/yesteryeAR-1.0/ViroSample/android/app/build/intermediates/incremental/mergeArDebugResources/merged.dir/values-ky/values-ky.xml",
             "map": [
                 {
                     "source": "/home/tuskem/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/e27a43601472cc73648088c6adc5cef3/res/values-ky/values.xml",
@@ -38,6 +38,23 @@
                     }
                 },
                 {
+                    "source": "/home/tuskem/.gradle/caches/transforms-1/files-1.1/core-1.7.0.aar/48d00a83dc7761e230f3f08d4d96f216/res/values-ky/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8",
+                        "startColumns": "0,0,0,0,0",
+                        "startOffsets": "190,234,284,390,499",
+                        "endColumns": "43,49,105,108,63",
+                        "endOffsets": "233,283,389,498,562"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "105,153,207,317,430",
+                        "endColumns": "47,53,109,112,67",
+                        "endOffsets": "148,202,312,425,493"
+                    }
+                },
+                {
                     "source": "/home/tuskem/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/2cfc9bbdbdb913f0629d21a58d62e42c/res/values-ky/values-ky.xml",
                     "from": {
                         "startLines": "2",
@@ -52,23 +69,6 @@
                         "startOffsets": "5976",
                         "endColumns": "100",
                         "endOffsets": "6072"
-                    }
-                },
-                {
-                    "source": "/home/tuskem/.gradle/caches/transforms-1/files-1.1/core-1.7.0.aar/4b1b440b64d7c56e017a6df076ae0438/res/values-ky/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8",
-                        "startColumns": "0,0,0,0,0",
-                        "startOffsets": "190,234,284,390,499",
-                        "endColumns": "43,49,105,108,63",
-                        "endOffsets": "233,283,389,498,562"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "105,153,207,317,430",
-                        "endColumns": "47,53,109,112,67",
-                        "endOffsets": "148,202,312,425,493"
                     }
                 },
                 {

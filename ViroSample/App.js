@@ -234,23 +234,24 @@ export default class ViroSample extends Component {
   //   )
   // }
   _getHomeNavigator() {
+
     return (
       <View>
         <ImageBackground source={require("./components/background.png")} style={{ width: '100%', height: '100%' }}>
           <TouchableHighlight
             style={localStyles.buttonstyle}
-            onPress={this._getExperienceButtonOnPress(HOMEPAGE_NAVIGATOR_TYPE)}
+            onPress={this._getExperienceButtonOnPress(HOMEPAGE_NAVIGATOR_TYPE)()}
             underlayColor={'#FF0000'}
           >
             <Text style={localStyles.text}>HOME PAGE</Text>
           </TouchableHighlight>
-          <TouchableHighlight
+          {/* <TouchableHighlight
             style={localStyles.buttonstyle}
             onPress={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
             underlayColor={'#FF0000'}
           >
             <Text style={localStyles.text}>MAPS</Text>
-          </TouchableHighlight>
+          </TouchableHighlight> */}
         </ImageBackground>
 
       </View >
@@ -264,6 +265,7 @@ export default class ViroSample extends Component {
           getExperienceButtonOnPress={this._getExperienceButtonOnPress(HOME_NAVIGATOR_TYPE)
           }
           getMapWithCoords={this._getMapWithCoords}
+          goMap={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
 
 
         />

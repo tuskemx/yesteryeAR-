@@ -61,7 +61,7 @@ class UserPage extends Component {
                             source={require("./back.png")}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={{}}>
+                    <TouchableOpacity onPress={() => { restartSelf() }}>
                         <Image
                             style={{ width: 50, height: 50 }}
                             source={require("./logout.png")}

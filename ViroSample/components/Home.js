@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     title: {
         color: "black",
         textAlign: "center",
+
         fontSize: 20,
         backgroundColor: "white"
     },
@@ -181,7 +182,7 @@ export default class Homepage extends Component {
                                     source={require("./image.png")}
                                 />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={this.props.getExperienceButtonOnPress}>
+                            <TouchableOpacity onPress={this.props.goMap}>
                                 <Image
                                     style={{ width: 50, height: 50 }}
                                     source={require("./nav.png")}
