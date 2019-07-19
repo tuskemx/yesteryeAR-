@@ -171,21 +171,15 @@ export default class ViroSample extends Component {
   }
 
   _getMapWithCoords(a, place) {
-    console.warn(a, "mappcords")
-    console.warn(place, "insidegetmapwithcoords");
 
 
     return () => {
-      console.warn("return check")
-      console.warn(a, "mapcords inside return")
-      console.log(place, "should be card inside return");
+
 
       setTimeout(() => {
         this.setState({
           navigatorType: a,
           place: place
-        }, () => {
-          console.warn(this.state.navigatorType, this.state.place, "ghghhgh")
         })
 
       }, 4 * 300);

@@ -81,7 +81,7 @@ export default class Maps extends Component {
 
   markerClick = (placeInfo) => {
     const x = getDistanceFromLatLonInKm(53.4, -2.23, 53.3, -2.25) // create distance between your locaton and current location to work out proximity
-    console.warn(x);
+    
     setTimeout(() => {
       this.setState({ placeInfo: placeInfo })
     }, 5 * 100)
@@ -100,7 +100,7 @@ export default class Maps extends Component {
 
   render() {
 
-    console.warn(this.props.place, "dddddddddddddd");
+  
 
     const piccadilly = {
       latitude: 53.481,

@@ -84,7 +84,7 @@ export default class Homepage extends Component {
             longitudeDelta: 0.005
         };
         const x = this.props.getMapWithCoords("MAPCOORDS", obj);
-        console.warn(x);
+
         return (
             <TouchableOpacity onPress={x()}>
                 <Image
@@ -103,7 +103,7 @@ export default class Homepage extends Component {
             longitudeDelta: 0.005
         };
         const x = this.props.getMapWithCoords("MAPCOORDS", obj);
-        console.warn(x);
+
         return (
             <TouchableOpacity onPress={x()}>
                 <Image
@@ -122,7 +122,7 @@ export default class Homepage extends Component {
             longitudeDelta: 0.005
         };
         const x = this.props.getMapWithCoords("MAPCOORDS", obj);
-        console.warn(x);
+
         return (
             <TouchableOpacity onPress={x()}>
                 <Image
@@ -141,7 +141,7 @@ export default class Homepage extends Component {
             longitudeDelta: 0.005
         };
         const x = this.props.getMapWithCoords("MAPCOORDS", obj);
-        console.warn(x);
+
         return (
             <TouchableOpacity onPress={x()}>
                 <Image
@@ -159,7 +159,7 @@ export default class Homepage extends Component {
             longitudeDelta: 0.005
         };
         const x = this.props.getMapWithCoords("MAPCOORDS", obj);
-        console.warn(x);
+
         return (
             <TouchableOpacity onPress={x()}>
                 <Image
