@@ -1,7 +1,7 @@
 import MapView from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation'
 import React, { Component, Fragment } from 'react';
-import { Text, View, StyleSheet, Button, TouchableHighlight, Vibration, Image, Linking } from 'react-native';
+import { Text, View, StyleSheet, Button, TouchableHighlight, Vibration, Image, Linking, TouchableOpacity } from 'react-native';
 import PlaceInfo from './PlaceInfo';
 import { getDistanceFromLatLonInKm } from './utils/utils'
 
@@ -103,22 +103,67 @@ export default class Maps extends Component {
     console.warn(this.props.place, "dddddddddddddd");
 
     const piccadilly = {
-      latitude: 53.4810, longitude: -2.2369, title: "Piccadilly Gardens, 1952", description: "Piccadilly Gardens", visitors: 12, url: 'Piccadilly', visitorNames: ['Keanu Reeves', 'Barry Scott']
-    }
+      latitude: 53.481,
+      longitude: -2.2369,
+      title: 'Piccadilly Gardens, 1952',
+      description: 'Piccadilly Gardens, 1952',
+      visitors: 12,
+      url: 'Piccadilly',
+      visitorNames: ['MoJama1995 - 14/04/2019']
+    };
+
+    const salfordLadsClub = {
+      latitude: 53.47696,
+      longitude: -2.274452,
+      title: 'Salford Lads Club, 1985',
+      description: 'There is a light that never goes out...',
+      visitors: 12,
+      url: 'salfordLadsClub',
+      visitorNames: [
+        'xX-JohnnyMarrGuitarr-Xx - 19/11/1985',
+        'smithsFan99 - 23/05/2019'
+      ]
+    };
 
     const hmp = {
-      latitude: 53.49175, longitude: -2.24567, title: "Strangeways Prison", description: "Assize Courts", url: 'Strangeways', visitors: 5, visitorNames: ['Keanu Reeves', 'Barry Scott']
-    }
+      latitude: 53.49175,
+      longitude: -2.24567,
+      title: 'Strangeways Prison, 1938',
+      description: 'Assize Courts',
+      url: 'Strangeways, 1938',
+      visitors: 2,
+      visitorNames: ['Keanu Reeves - 23/12/2015', 'Barry Scott - 13/01/2017']
+    };
     const hulme = {
-      latitude: 53.469053, longitude: -2.240609, title: "Pauldens Fire, Cavendish Street", description: "Paulden's Fire", url: 'hulme', visitors: 5, visitorNames: ['Keanu Reeves', 'Barry Scott']
-    }
+      latitude: 53.469053,
+      longitude: -2.240609,
+      title: 'Pauldens Fire, Cavendish Street, 1957',
+      description: "Paulden's Fire",
+      url: 'hulme',
+      visitors: 2,
+      visitorNames: [
+        'Audrey Niffenegger - 24/11/2011',
+        'Marty McFly - 14/03/2015'
+      ]
+    };
     const victoria = {
-      latitude: 53.487539, longitude: -2.242396, title: "Victoria Station", description: "quarter to nine - feeling fine", url: 'victoria', visitors: 5, visitorNames: ['Keanu Reeves', 'Barry Scott']
-    }
-
+      latitude: 53.487539,
+      longitude: -2.242396,
+      title: 'Victoria Station, 1949',
+      description: 'quarter to nine - feeling fine',
+      url: 'victoria',
+      visitors: 5,
+      visitorNames: ['Ray Purchase - 22/06/2018']
+    };
     const mancoats = {
-      latitude: 53.484952, longitude: -2.225563, title: "Man in Ancoats", description: "Man/c + coat in Ancoats = Mancoats", url: 'mancoats', visitors: 7, visitorNames: ['Keanu Reeves', 'Barry Scott']
-    }
+      latitude: 53.484952,
+      longitude: -2.225563,
+      title: 'Man in Ancoats, 1952',
+      description: 'Man/c + coat in Ancoats = Mancoats',
+      url: 'mancoats',
+      visitors: 7,
+      visitorNames: ['Kelly Davidson - 16/07/2019', 'Matt Edwards - 15/07/2019']
+    };
     return (
 
       <Fragment>
@@ -183,6 +228,13 @@ export default class Maps extends Component {
                     </View>
                   </MapView.Callout >
                 </MapView.Marker>
+                <MapView.Marker onPress={() => this.onDoublePress(salfordLadsClub)} coordinate={salfordLadsClub} title={salfordLadsClub.title} description={salfordLadsClub.description}><Image resizeMode="contain" style={{ width: 50, height: 50, borderRadius: 70 }} source={require('./smiths.jpg')} />
+                  <MapView.Callout onPress={() => this.markerClick(salfordLadsClub)} >
+                    <View>
+
+                    </View>
+                  </MapView.Callout >
+                </MapView.Marker>
               </View>
             }
 
@@ -192,14 +244,15 @@ export default class Maps extends Component {
         }
 
 
-        <Button
+     
+        <TouchableOpacity
+          style={styles.buttonstyle}
           // onPress={this.handlePress}
           onPress={this.props.getExperienceButtonOnPress}
-          title="home"
-          color={this.state.color}
           accessibilityLabel="Navigate back a page"
-        />
-
+        >
+          <Text style={styles.text}>Home</Text>
+        </TouchableOpacity>
         {!this.state.isPopupTrue &&
           <View>
             <PlaceInfo info={this.state.placeInfo} ChangeMapState={this.ChangeMapState} />
@@ -234,6 +287,23 @@ const styles = StyleSheet.create({
   },
   mapView: {
     ...StyleSheet.absoluteFillObject
+  },
+  buttonstyle: {
+    paddingTop: 8,
+    paddingBottom: 8,
+
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    borderWidth: 1
+  },
+  text: {
+    alignSelf: 'center',
+    color: 'black',
+    fontSize: 16,
+    fontWeight: '600',
+    paddingTop: 5,
+    paddingBottom: 5,
+    backgroundColor: '#ffffff'
   }
 });
 

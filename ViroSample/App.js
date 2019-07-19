@@ -228,7 +228,7 @@ export default class ViroSample extends Component {
   //           underlayColor={'#FF0000'} >
   //           <Text style={localStyles.text}>MAPS</Text>
   //         </TouchableHighlight>
-  //       </ImageBackground>
+  //       </ImageBackground>3
 
   //     </View>
   //   )
@@ -266,6 +266,7 @@ export default class ViroSample extends Component {
           }
           getMapWithCoords={this._getMapWithCoords}
           goMap={this._getExperienceButtonOnPress(MAPS_NAVIGATOR_TYPE)}
+          unset={this._getExperienceButtonOnPress('UNSET')}
 
 
         />

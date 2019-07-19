@@ -61,7 +61,7 @@ class UserPage extends Component {
                             source={require("./back.png")}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { restartSelf() }}>
+                    <TouchableOpacity onPress={() => { this.props.unset() }}>
                         <Image
                             style={{ width: 50, height: 50 }}
                             source={require("./logout.png")}
@@ -73,9 +73,9 @@ class UserPage extends Component {
                     style={styles.imageProfile}
                     source={require("./Profile-ICon.png")}
                 />
-                <Text style={styles.textName}>Josh Kain</Text>
-                <Text style={styles.textEmail}>joshkain@live.com</Text>
-                <Text style={styles.textEmail}>Locations visted: 3</Text>
+                <Text style={styles.textName}>JodieWhittaker</Text>
+                <Text style={styles.textEmail}>jodiewhittaker@yaWho.co.uk</Text>
+                <Text style={styles.textEmail}>Locations unlocked: 3</Text>
                 <Image style={styles.ImageCog} source={require("./settings.png")} />
             </View>
         );

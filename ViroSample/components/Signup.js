@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+
+
+import React, { Component } from 'react';
 import {
     View,
     StyleSheet,
@@ -9,13 +11,13 @@ import {
     TouchableOpacity,
     TouchableHighlight,
     Image
-} from "react-native";
+} from 'react-native';
 
 export default class SignUp extends Component {
     state = {
-        email: "",
-        password: "",
-        username: "",
+        email: '',
+        password: '',
+        username: '',
         renderMap: false,
         correctInput: true,
         hidden: true
@@ -24,9 +26,9 @@ export default class SignUp extends Component {
     handleSubmit = () => {
         this.props.changeStateBool(false);
         if (
-            this.state.username === "J" &&
-            this.state.password === "J" &&
-            this.state.email === "J"
+            this.state.username === 'J' &&
+            this.state.password === 'J' &&
+            this.state.email === 'J'
         ) {
             this.props._getExperienceButtonOnPress();
         } else {
@@ -37,14 +39,16 @@ export default class SignUp extends Component {
     render() {
         return (
             <ImageBackground
-                source={require("./background.png")}
+                source={require('./background.png')}
                 style={styles.background}
             >
                 <View style={styles.image}>
-                    <Image source={require("./Beware.png")} style={styles.safe} />
-
-                    <Image source={require("./yester.png")} style={styles.logo} />
+                    <Image source={require("./yylogo3.png")} style={styles.logo} />
                 </View>
+                {/* <View style={styles.image}>
+          <Image source={require('./Beware.png')} style={styles.safe} />
+          <Image source={require('./yester.png')} style={styles.logo} />
+        </View> */}
                 <View style={styles.container}>
                     <View style={styles.containerform}>
                         <Text style={styles.formtext}>Username</Text>
@@ -106,33 +110,36 @@ export default class SignUp extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: "column",
-        justifyContent: "center",
+        flexDirection: 'column',
+        justifyContent: 'center',
         marginTop: 0,
-        padding: 20,
-        alignItems: "stretch"
+        padding: 20
+        // alignItems: 'stretch'
     },
     formtext: {
         fontSize: 18,
-        color: "black",
-        fontWeight: "900"
+        color: 'black',
+        fontWeight: '900',
+        marginBottom: 10
     },
     containerform: {
         borderRadius: 20,
-        backgroundColor: "white",
-        padding: 10
+        backgroundColor: 'white',
+        padding: 10,
+        borderWidth: 1,
+        borderColor: 'black'
     },
     error: {
-        color: "black"
+        color: 'black'
     },
     text: {
-        alignSelf: "center",
-        color: "black",
+        alignSelf: 'center',
+        color: 'black',
         fontSize: 16,
-        fontWeight: "600",
+        fontWeight: '600',
         paddingTop: 5,
         paddingBottom: 5,
-        backgroundColor: "#ffffff"
+        backgroundColor: '#ffffff'
     },
     buttonstyle: {
         marginTop: 10,
@@ -140,34 +147,39 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
         marginLeft: 30,
         marginRight: 30,
-        backgroundColor: "#ffffff",
+        backgroundColor: '#ffffff',
         borderRadius: 10,
         borderWidth: 1
     },
     form: {
         fontSize: 12,
-        backgroundColor: "black",
+        backgroundColor: 'black',
         paddingTop: 5,
         paddingBottom: 5,
         borderRadius: 10,
-        color: "white"
+        color: 'white'
     },
     background: {
-        width: "100%",
-        height: "100%",
+        width: '100%',
+        height: '100%',
         opacity: 0.9
     },
     logo: {
-        justifyContent: "center",
-        alignSelf: "center",
+        justifyContent: 'center',
+        alignSelf: 'center',
         borderRadius: 20,
         width: 380,
         height: 140
     },
     safe: {
-        justifyContent: "flex-end",
-        alignSelf: "flex-end",
+        justifyContent: 'flex-end',
+        alignSelf: 'flex-end',
         width: 210,
         height: 90
+    },
+    logo: {
+        justifyContent: 'center',
+        alignSelf: 'center',
+        margin: '5%'
     }
 });

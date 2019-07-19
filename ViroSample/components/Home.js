@@ -15,33 +15,32 @@ import {
 
 const styles = StyleSheet.create({
     title: {
-        color: "black",
-        textAlign: "center",
-
-        fontSize: 20,
-        backgroundColor: "white"
+        color: 'black',
+        justifyContent: 'center',
+        fontSize: 15,
+        backgroundColor: 'white'
     },
     alternativeLayoutButtonContainer: {
         margin: 20,
-        flexDirection: "row",
-        justifyContent: "space-between"
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     text: {
-        color: "black",
-        textAlign: "left",
+        color: 'black',
+        textAlign: 'left',
         fontSize: 16,
         margin: 10,
         padding: 5
     },
 
     button: {
-        width: "40%",
-        height: "10%",
-        alignSelf: "center"
+        width: '40%',
+        height: '10%',
+        alignSelf: 'center'
     },
 
     rightIcon: {
-        alignSelf: "flex-end"
+        alignSelf: 'flex-end'
     },
     contentContainer: {
         paddingBottom: 20
@@ -50,24 +49,29 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     buttonstyle: {
-        color: "red"
+        color: 'red'
     },
     navbar: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        borderColor: "black",
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        borderColor: 'black',
         padding: 5
     },
     scroll: {
         paddingBottom: 5,
-        padding: 10
+        padding: 10,
+        borderWidth: 5
     },
     border: {
-        borderBottomWidth: 160,
-        borderColor: "white"
+        borderColor: 'white'
+    },
+    title2: {
+        padding: 5,
+        fontWeight: 'bold',
+        fontSize: 20,
+        color: 'black'
     }
 });
-
 export default class Homepage extends Component {
     state = {
         UserPage: false
@@ -147,6 +151,24 @@ export default class Homepage extends Component {
             </TouchableOpacity>
         );
     };
+    handleCardSmiths = event => {
+        let obj = {
+            latitude: 53.47696,
+            longitude: -2.274452,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005
+        };
+        const x = this.props.getMapWithCoords("MAPCOORDS", obj);
+        console.warn(x);
+        return (
+            <TouchableOpacity onPress={x()}>
+                <Image
+                    style={{ width: 70, height: 70 }}
+                    source={require("./back.png")}
+                />
+            </TouchableOpacity>
+        );
+    };
 
     userPage = event => {
         this.setState({ UserPage: true });
@@ -163,33 +185,37 @@ export default class Homepage extends Component {
                         <UserPage
                             home={this.props.getExperienceButtonOnPress}
                             backhome={this.backhome}
+                            unset={this.props.unset}
                         />
                     </View>
                 )}
                 {!this.state.UserPage && (
                     <View>
-                        <View style={styles.navbar}>
-                            <TouchableOpacity onPress={this.props.getExperienceButtonOnPress}>
-                                <Image
-                                    style={{ width: 50, height: 50 }}
-                                    source={require("./back.png")}
-                                />
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={this.userPage}>
-                                <Image
-                                    ref="USER_PAGE"
-                                    style={{ width: 50, height: 50 }}
-                                    source={require("./image.png")}
-                                />
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={this.props.goMap}>
-                                <Image
-                                    style={{ width: 50, height: 50 }}
-                                    source={require("./nav.png")}
-                                />
-                            </TouchableOpacity>
-                        </View>
                         <ScrollView style={styles.scroll}>
+
+                            <View style={styles.navbar}>
+                                <TouchableOpacity onPress={() => { this.props.unset() }}>
+                                    <Image
+                                        style={{ width: 50, height: 50 }}
+                                        source={require("./back.png")}
+                                    />
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={this.userPage}>
+                                    <Image
+                                        ref="USER_PAGE"
+                                        style={{ width: 50, height: 50 }}
+                                        source={require("./image.png")}
+                                    />
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={this.props.goMap}>
+                                    <Image
+                                        style={{ width: 50, height: 50 }}
+                                        source={require("./nav.png")}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                            <Text style={styles.title2}>Locations Near You</Text>
+
                             <View style={styles.border}>
                                 <View>
                                     <TouchableOpacity
@@ -201,7 +227,7 @@ export default class Homepage extends Component {
                                             source={require("./Assize.jpg")}
                                             style={{ width: 400, height: 200 }}
                                         >
-                                            <Text style={styles.title}>Manchester Assize Courts</Text>
+                                            <Text style={styles.title}>Manchester Assize Courts, 1946</Text>
                                             {/* <Text style={styles.text}>
               The Manchester Assize Courts were law courts on Great Ducie Street
               in the Strangeways district of Manchester, England. It was 279 ft
@@ -220,7 +246,7 @@ export default class Homepage extends Component {
                                             source={require("./victoria.jpg")}
                                             style={{ width: 400, height: 200 }}
                                         >
-                                            <Text style={styles.title}>Victoria Station</Text>
+                                            <Text style={styles.title}>Victoria Station, 1949</Text>
                                             {/* <Text style={styles.text}>
             The Manchester and Le eds Railway (M&LR) was founded in 1836 and the
             company began building its line between Manchester and Leeds in
@@ -241,7 +267,7 @@ export default class Homepage extends Component {
                                             source={require("./hulmefire.jpg")}
                                             style={{ width: 400, height: 200 }}
                                         >
-                                            <Text style={styles.title}>Opal Halls MMU</Text>
+                                            <Text style={styles.title}>Opal Halls MMU, 1957</Text>
                                             {/* <Text style={styles.text}>
             MMU halls are now build on the site after a serious fire took place
             causing the building to dramatically collapse.
@@ -257,7 +283,30 @@ export default class Homepage extends Component {
                                             source={require("./piccadilly.jpg")}
                                             style={{ width: 400, height: 200 }}
                                         >
-                                            <Text style={styles.title}>Picadilly Gardens</Text>
+                                            <Text style={styles.title}>Picadilly Gardens, 1962</Text>
+                                            {/* <Text style={styles.text}>
+            Before 1755: The area was occupied by water-filled clay pits called
+            the Daub Holes. The Lord of the Manor donated the site and the pits
+            were replaced by a fine ornamental pond. 1914: After several years
+            in which the Manchester Corporation tried to decide how to develop
+            the site, it was left and made into the largest open green space in
+            the city centre. The Manchester Public Free Library Reference
+            Department was housed on the site for a number of years before the
+            move to Manchester Central Library. The sunken garden was a remnant
+            of the hospital's basement.
+          </Text> */}
+                                        </ImageBackground>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                        onPress={() => {
+                                            this.handleCardSmiths();
+                                        }}
+                                    >
+                                        <ImageBackground
+                                            source={require("./smiths.jpg")}
+                                            style={{ width: 400, height: 200 }}
+                                        >
+                                            <Text style={styles.title}>The Smiths, Salford Boys Club, 1985</Text>
                                             {/* <Text style={styles.text}>
             Before 1755: The area was occupied by water-filled clay pits called
             the Daub Holes. The Lord of the Manor donated the site and the pits

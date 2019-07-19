@@ -49,7 +49,7 @@ export default class Login extends Component {
                 style={styles.background}
             >
                 <View style={styles.image}>
-                    <Image source={require("./yester.png")} style={styles.logo} />
+                    <Image source={require("./yylogo3.png")} style={styles.logo} />
                 </View>
                 <View>
                     {!this.state.renderMap && (
@@ -114,27 +114,21 @@ export default class Login extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: "center",
-        marginTop: 120,
-        padding: 20,
+        justifyContent: 'center',
         borderRadius: 50,
         opacity: 30
     },
     logo: {
-        justifyContent: "center",
-        alignSelf: "center",
-        width: 350,
-        height: 140,
-        marginTop: 5,
-        borderRadius: 80
+        justifyContent: 'center',
+        alignSelf: 'center',
+        margin: '5%'
     },
     image: {
-        flexDirection: "column"
+        // flexDirection: 'column'
     },
     background: {
-        width: "100%",
-        height: "100%",
-        opacity: 0.9
+        width: '100%',
+        height: '100%'
     },
     buttonstyle: {
         marginTop: 10,
@@ -142,49 +136,56 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
         marginLeft: 30,
         marginRight: 30,
-        backgroundColor: "#ffffff",
+        backgroundColor: '#ffffff',
         borderRadius: 10,
         borderWidth: 1
     },
     text: {
-        alignSelf: "center",
-        color: "black",
+        alignSelf: 'center',
+        color: 'black',
         fontSize: 16,
-        fontWeight: "600",
+        fontWeight: '600',
         paddingTop: 5,
         paddingBottom: 5,
-        backgroundColor: "#ffffff"
+        backgroundColor: '#ffffff'
     },
     form: {
         fontSize: 12,
-        backgroundColor: "black",
+        backgroundColor: 'black',
         paddingTop: 5,
         paddingBottom: 5,
         borderRadius: 10,
-        color: "white"
+        color: 'white'
     },
     formtext: {
         fontSize: 18,
-        color: "black",
+        color: 'black',
         marginTop: 10,
-
-        fontWeight: "900"
+        fontWeight: '900'
     },
     containerform: {
         borderRadius: 20,
-        backgroundColor: "white",
-        padding: 10
+        backgroundColor: 'white',
+        padding: 10,
+        borderWidth: 1,
+        borderColor: 'black'
     },
     error: {
-        color: "black"
+        color: 'black'
     },
     textboxfield: {
-        color: "white"
+        color: 'white'
     },
     safe: {
-        justifyContent: "flex-end",
-        alignSelf: "flex-end",
-        width: 100,
-        height: 20
+        justifyContent: 'flex-end',
+        alignSelf: 'center',
+        width: 150,
+        height: 40,
+        borderRadius: 10,
+        margin: 10,
+        borderWidth: 1,
+        borderColor: 'black'
+        // borderTopLeftRadius: 10,
+        // borderTopRightRadius: 10
     }
 });
